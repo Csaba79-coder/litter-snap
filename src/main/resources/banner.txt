@@ -1,0 +1,39 @@
+${AnsiColor.CYAN}
+
+
+
+LLLLLLLLLLL               iiii          tttt               tttt                                                   SSSSSSSSSSSSSSS
+L:::::::::L              i::::i      ttt:::t            ttt:::t                                                 SS:::::::::::::::S
+L:::::::::L               iiii       t:::::t            t:::::t                                                S:::::SSSSSS::::::S
+LL:::::::LL                          t:::::t            t:::::t                                                S:::::S     SSSSSSS
+  L:::::L               iiiiiiittttttt:::::tttttttttttttt:::::ttttttt        eeeeeeeeeeee    rrrrr   rrrrrrrrr S:::::S          nnnn  nnnnnnnn      aaaaaaaaaaaaa  ppppp   ppppppppp
+  L:::::L               i:::::it:::::::::::::::::tt:::::::::::::::::t      ee::::::::::::ee  r::::rrr:::::::::rS:::::S          n:::nn::::::::nn    a::::::::::::a p::::ppp:::::::::p
+  L:::::L                i::::it:::::::::::::::::tt:::::::::::::::::t     e::::::eeeee:::::eer:::::::::::::::::rS::::SSSS       n::::::::::::::nn   aaaaaaaaa:::::ap:::::::::::::::::p
+  L:::::L                i::::itttttt:::::::tttttttttttt:::::::tttttt    e::::::e     e:::::err::::::rrrrr::::::rSS::::::SSSSS  nn:::::::::::::::n           a::::app::::::ppppp::::::p
+  L:::::L                i::::i      t:::::t            t:::::t          e:::::::eeeee::::::e r:::::r     r:::::r  SSS::::::::SS  n:::::nnnn:::::n    aaaaaaa:::::a p:::::p     p:::::p
+  L:::::L                i::::i      t:::::t            t:::::t          e:::::::::::::::::e  r:::::r     rrrrrrr     SSSSSS::::S n::::n    n::::n  aa::::::::::::a p:::::p     p:::::p
+  L:::::L                i::::i      t:::::t            t:::::t          e::::::eeeeeeeeeee   r:::::r                      S:::::Sn::::n    n::::n a::::aaaa::::::a p:::::p     p:::::p
+  L:::::L         LLLLLL i::::i      t:::::t    tttttt  t:::::t    tttttte:::::::e            r:::::r                      S:::::Sn::::n    n::::na::::a    a:::::a p:::::p    p::::::p
+LL:::::::LLLLLLLLL:::::Li::::::i     t::::::tttt:::::t  t::::::tttt:::::te::::::::e           r:::::r          SSSSSSS     S:::::Sn::::n    n::::na::::a    a:::::a p:::::ppppp:::::::p
+L::::::::::::::::::::::Li::::::i     tt::::::::::::::t  tt::::::::::::::t e::::::::eeeeeeee   r:::::r          S::::::SSSSSS:::::Sn::::n    n::::na:::::aaaa::::::a p::::::::::::::::p
+L::::::::::::::::::::::Li::::::i       tt:::::::::::tt    tt:::::::::::tt  ee:::::::::::::e   r:::::r          S:::::::::::::::SS n::::n    n::::n a::::::::::aa:::ap::::::::::::::pp
+LLLLLLLLLLLLLLLLLLLLLLLLiiiiiiii         ttttttttttt        ttttttttttt      eeeeeeeeeeeeee   rrrrrrr           SSSSSSSSSSSSSSS   nnnnnn    nnnnnn  aaaaaaaaaa  aaaap::::::pppppppp
+                                                                                                                                                                    p:::::p
+                                                                                                                                                                    p:::::p
+                                                                                                                                                                   p:::::::p
+                                                                                                                                                                   p:::::::p
+                                                                                                                                                                   p:::::::p
+                                                                                                                                                                   ppppppppp
+
+${AnsiStyle.NORMAL}
+${AnsiColor.BRIGHT_GREEN}
+
+ ___      ___  __        ________  __    ___       _______     &     __   ___  _______  ___      ___  __    _____  ___      &      ______    ________     __       _______       __
+|"  \    /"  |/""\      /"       )|" \  |"  |     /"     "|         |/"| /  ")/"     "||"  \    /"  ||" \  (\"   \|"  \           /" _  "\  /"       )   /""\     |   _  "\     /""\
+ \   \  //  //    \    (:   \___/ ||  | ||  |    (: ______)         (: |/   /(: ______) \   \  //  / ||  | |.\\   \    |         (: ( \___)(:   \___/   /    \    (. |_)  :)   /    \
+  \\  \/. .//' /\  \    \___  \   |:  | |:  |     \/    |           |    __/  \/    |    \\  \/. ./  |:  | |: \.   \\  |          \/ \      \___  \    /' /\  \   |:     \/   /' /\  \
+   \.    ////  __'  \    __/  \\  |.  |  \  |___  // ___)_          (// _  \  // ___)_    \.    //   |.  | |.  \    \. |          //  \ _    __/  \\  //  __'  \  (|  _  \\  //  __'  \
+    \\   //   /  \\  \  /" \   :) /\  |\( \_|:  \(:      "|         |: | \  \(:      "|    \\   /    /\  |\|    \    \ |         (:   _) \  /" \   :)/   /  \\  \ |: |_)  :)/   /  \\  \
+     \__/(___/    \___)(_______/ (__\_|_)\_______)\_______)         (__|  \__)\_______)     \__/    (__\_|_)\___|\____\)          \_______)(_______/(___/    \___)(_______/(___/    \___)
+
+${AnsiStyle.NORMAL}
