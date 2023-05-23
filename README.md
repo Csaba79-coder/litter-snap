@@ -28,6 +28,10 @@
 - Spring Boot Test Autoconfigure
 - JUnit 5
 
+## Basic setup
+
+- See manual
+
 # Created by:
 
 ![img_1.png](img_1.png)
