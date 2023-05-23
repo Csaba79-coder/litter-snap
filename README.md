@@ -1,4 +1,4 @@
-![img.png](img.png)
+![img.png](/src/main/resources/static/img/readme/banner-app.png)
 
 
 ## Backend Dependencies
@@ -34,4 +34,4 @@
 
 # Created by:
 
-![img_1.png](img_1.png)
+![img_1.png](/src/main/resources/static/img/readme/banner-team.png)
