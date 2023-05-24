@@ -1,6 +1,6 @@
-package com.csaba79coder.littersnap.model.entity.user;
+package com.csaba79coder.littersnap.model.user.entity;
 
-import com.csaba79coder.littersnap.model.entity.base.Identifier;
+import com.csaba79coder.littersnap.model.base.entity.Auditable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
@@ -17,7 +17,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends Identifier {
+public class User extends Auditable {
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;

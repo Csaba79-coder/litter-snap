@@ -1,4 +1,4 @@
-![img.png](img.png)
+![img.png](/src/main/resources/static/img/readme/banner-app.png)
 
 
 ## Backend Dependencies
@@ -28,6 +28,10 @@
 - Spring Boot Test Autoconfigure
 - JUnit 5
 
+## Basic setup
+
+- See manual
+
 # Created by:
 
-![img_1.png](img_1.png)
+![img_1.png](/src/main/resources/static/img/readme/banner-team.png)

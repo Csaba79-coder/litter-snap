@@ -1,4 +1,4 @@
-package com.csaba79coder.littersnap.model.entity.base;
+package com.csaba79coder.littersnap.model.base.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;

@@ -1,6 +1,6 @@
 package com.csaba79coder.littersnap.controller;
 
-import com.csaba79coder.littersnap.model.service.UserService;
+import com.csaba79coder.littersnap.model.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
