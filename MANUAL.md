@@ -9,7 +9,7 @@ Step-by-step guide:
 
 ![img.png](src/main/resources/static/img/manual/env-variable.png)
 
-<span style="color: cyan">The program is creating the empty database with tables (also in the MySQL server) without running any script</span>
+<span style="color: cyan">The program is creating the empty database with tables (also in the MySQL server) without running any script (due to the setup of application.properties)!</span>
 <br>
 <span style="color: darkcyan">Scripts are added to the project as it was requested!</span>
 
