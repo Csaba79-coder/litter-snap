@@ -9,6 +9,11 @@ Step-by-step guide:
 
 ![img.png](src/main/resources/static/img/manual/env-variable.png)
 
+<span style="color: cyan">The program is creating the empty database with tables (also in the MySQL server) without running any script</span>
+<br>
+<span style="color: darkcyan">Scripts are added to the project as it was requested!</span>
+
+
 | Name               | Value                        | Remark            | Extra remark                                                                                                                                                 |
 |--------------------|------------------------------|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | DB_PORT_MYSQL           | 3306                         | default           | please user your own port that has been set to MySQL server                                                                                                  |
