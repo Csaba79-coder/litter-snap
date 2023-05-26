@@ -1,0 +1,61 @@
+.background-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url("/static/img/webpage/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.60;
+}
+.logo-and-slogo-container{
+    position: relative;
+}
+
+
+.input-label-logo{
+    position: absolute;
+    bottom: 20px;
+    left: 1px;
+    font-family: 'Niagara Solid', cursive;
+    font-size: 100px; /* Adjust the font size as needed */
+    color: #103ed2;
+    text-shadow: 2px 2px 4px rgba(231, 202, 16, 0.75);
+}
+
+.input-label-slogan{
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+    font-family: 'Segoe UI', cursive;
+    font-size: 31px; /* Adjust the font size as needed */
+    color: #7c007c;
+    text-shadow: 2px 2px 4px rgb(215, 65, 163);
+}
+
+.man-with-the-phone-icon{
+    width:300px;
+    opacity: 0.965;
+}
+
+
+/*All media queries*/
+
+/* Media query for smaller viewports */
+@media (max-width: 576px) {
+    .input-label-logo {
+        font-size: 60px;
+    }
+
+    .input-label-slogan {
+        font-size: 20px;
+    }
+
+    .man-with-the-phone-icon {
+        width: 230px;
+    }
+}
+
+
