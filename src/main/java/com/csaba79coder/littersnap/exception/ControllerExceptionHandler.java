@@ -1,6 +1,7 @@
 package com.csaba79coder.littersnap.exception;
 
 import com.csaba79coder.littersnap.value.ErrorCode;
+import jakarta.mail.SendFailedException;
 import org.modelmapper.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,11 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(value = {ValidationException.class})
     public ResponseEntity<Object> handleInvalidPasswordOrUsernameException(ValidationException ex) {
+        return new ResponseEntity<>(responseBodyWithMessage(LS_003, ex.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = {SendFailedException.class})
+    public ResponseEntity<Object> handleSendFailedException(SendFailedException ex) {
         return new ResponseEntity<>(responseBodyWithMessage(LS_003, ex.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
