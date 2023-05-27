@@ -1,6 +1,6 @@
-package com.csaba79coder.littersnap.model.litterReport.persistence;
+package com.csaba79coder.littersnap.model.Report.persistence;
 
-import com.csaba79coder.littersnap.model.litterReport.entity.Report;
+import com.csaba79coder.littersnap.model.Report.entity.Report;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.UUID;

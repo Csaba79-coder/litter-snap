@@ -1,6 +1,6 @@
-package com.csaba79coder.littersnap.model.litterReport.service;
+package com.csaba79coder.littersnap.model.Report.service;
 
-import com.csaba79coder.littersnap.model.litterReport.persistence.LitterReportRepository;
+import com.csaba79coder.littersnap.model.Report.persistence.LitterReportRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -11,4 +11,5 @@ import org.springframework.stereotype.Service;
 public class ReportService {
 
     LitterReportRepository litterReportRepository;
+
 }
