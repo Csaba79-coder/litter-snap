@@ -1,3 +1,4 @@
+
 .background-overlay {
     position: fixed;
     top: 0;
@@ -5,7 +6,7 @@
     bottom: 0;
     left: 0;
     z-index: -1;
-    background-image: url("/static/img/webpage/background.jpg");
+    background-image: url("images/background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.60;
@@ -57,5 +58,13 @@
         width: 230px;
     }
 }
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .popup-content {
+        width: 90%;
+    }
+}
+
 
 

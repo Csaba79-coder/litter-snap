@@ -6,10 +6,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
-    <!--    Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+    <!-- Include jQuery from Google CDN -->
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link th:src="@{/index.js}">
 
-    <link rel="stylesheet" href="../static/style.css">
     <title>Litter Snap</title>
 </head>
 
@@ -18,19 +20,41 @@
 <div class="background-overlay"></div>
 
 <div class="container-fluid">
-
+    <!-- Button to trigger the modal -->
     <div class="row justify-content-end m-3">
         <div class="btn-group col-12 col-md-4 col-lg-2">
-            <button class="btn btn-success btn-sm btn-block m-1 ">LogIn</button>
-            <button class="btn btn-warning btn-sm btn-block m-1 ">SignUp</button>
+            <button class="btn btn-success btn-sm btn-block m-1" data-bs-toggle="modal" data-bs-target="#generalModal">
+                LogIn
+            </button>
+            <button class="btn btn-warning btn-sm btn-block m-1" data-bs-toggle="modal" data-bs-target="#generalModal">
+                SignUp
+            </button>
         </div>
     </div>
 
-<!--    Placeholder-->
+    <!-- Modal -->
+
+    <div class="modal fade" id="generalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <!-- Modal content goes here -->
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div th:if="${view}" class="modal-body">
+                    <!-- Modal body content goes here -->
+                    <div th:insert="~{${view}}"></div>
+                    <form>
+                        <!-- Form fields and elements -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-
-<!--    Middle Part -->
+    <!--    Middle Part -->
     <div class="row justify-content-center align-items-center min-vh-100">
         <div class="col-12 col-md-8 col-lg-6">
 
@@ -42,26 +66,30 @@
                         <span class="input-label-slogan">If you can see it, you can fix it...</span>
                     </div>
                     <div class="col-5 col-md-5 col-lg-5">
-                        <img src="/static/img/webpage/ManAndPhone.png" alt="Image" class="man-with-the-phone-icon">
+                        <img th:src="@{/images/ManAndPhone.png}" alt="Image" class="man-with-the-phone-icon">
                     </div>
                 </div>
             </div>
 
-            <input type="text" class="form-control" placeholder="Enter your town/city and press enter">
+            <form th:action="@{/reportForm}" method="post" >
+                <input type="text" class="form-control" placeholder="Enter your town/city and press enter" name="city">
+            </form>
         </div>
     </div>
 
-<!--    Carusel-->
+    <!--    Carusel-->
     <div class="row mt-5">
         <div class="col">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <!-- Generate indicators based on the number of carousel items -->
-                    <li th:each="image, index : ${images}" data-target="#carouselExampleIndicators" data-slide-to="${index}" th:class="${index == 0} ? 'active' : ''"></li>
+                    <li th:each="image, index : ${images}" data-target="#carouselExampleIndicators"
+                        data-slide-to="${index}" th:class="${index == 0} ? 'active' : ''"></li>
                 </ol>
                 <div class="carousel-inner">
                     <!-- Generate dynamic carousel items using Thymeleaf iteration -->
-                    <div th:each="image, index : ${images}" th:class="${index == 0} ? 'carousel-item active' : 'carousel-item'">
+                    <div th:each="image, index : ${images}"
+                         th:class="${index == 0} ? 'carousel-item active' : 'carousel-item'">
                         <img th:src="${image.imageUrl}" class="d-block w-100" th:alt="${image.altText}">
                     </div>
                 </div>

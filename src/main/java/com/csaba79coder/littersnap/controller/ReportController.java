@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
-
 @Controller
 @RequestMapping("/thy")
 public class ReportController {
@@ -17,10 +15,12 @@ public class ReportController {
     LitterReportRepository reportRepository;
 
     // Mapping for adding a new report (GET)
-    @GetMapping("/report/add")
+    @GetMapping("/reportForm")
     public String showAddReportForm(Model model) {
         model.addAttribute("report", new Report());
-        return "addReport";
+        model.addAttribute("view", "addReport");
+
+        return "index";
     }
 
 }
