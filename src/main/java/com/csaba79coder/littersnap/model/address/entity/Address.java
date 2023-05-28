@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "address")
@@ -30,7 +30,7 @@ public class Address extends Auditable {
     @Column(name = "country")
     private String country;
 
-    @ManyToMany
-    Set<Report> reports;
+    @OneToMany(mappedBy = "address")
+    private List<Report> reports;
 
 }

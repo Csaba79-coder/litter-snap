@@ -1,19 +1,16 @@
 package com.csaba79coder.littersnap.model.report.service;
 
-import com.csaba79coder.littersnap.model.report.persistence.ReportRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
+import com.csaba79coder.littersnap.model.report.entity.Report;
 
-@Service
-@RequiredArgsConstructor
-@Slf4j
-public class ReportService {
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-    ReportRepository reportRepository;
+public interface ReportService {
 
-    public ReportService(ReportRepository reportRepository) {
-        this.reportRepository = reportRepository;
-    }
+    List<Report> findAll();
+    Optional<Report> findById(UUID id);
+    void save(Report report);
+    void deleteById(UUID id);
 
 }

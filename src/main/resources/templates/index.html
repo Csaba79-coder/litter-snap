@@ -31,6 +31,16 @@
         </div>
     </div>
 
+<!--    modal-->
+    <div id="addReportModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addReportModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <!-- Content of the modal from add-report.html -->
+                <div th:include="add_report :: modal-content"></div>
+            </div>
+        </div>
+    </div>
+
     <!--    Middle Part -->
     <div class="row justify-content-center align-items-center min-vh-100">
         <div class="col-12 col-md-8 col-lg-6">
@@ -47,8 +57,8 @@
                     </div>
                 </div>
             </div>
-            <input type="text" class="form-control" placeholder="Enter your town/city and press enter" name="city"
-                   id="cityInput">
+
+            <input type="text" class="form-control" id="city" name="city" placeholder="Enter the city and press enter!" required>
         </div>
     </div>
 
