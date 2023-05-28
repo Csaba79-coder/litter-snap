@@ -1,7 +1,7 @@
 package com.csaba79coder.littersnap.model.address.entity;
 
 import com.csaba79coder.littersnap.model.base.entity.Auditable;
-import com.csaba79coder.littersnap.model.Report.entity.Report;
+import com.csaba79coder.littersnap.model.report.entity.Report;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

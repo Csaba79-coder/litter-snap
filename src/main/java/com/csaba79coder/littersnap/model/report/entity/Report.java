@@ -1,4 +1,4 @@
-package com.csaba79coder.littersnap.model.Report.entity;
+package com.csaba79coder.littersnap.model.report.entity;
 
 import com.csaba79coder.littersnap.model.address.entity.Address;
 import com.csaba79coder.littersnap.model.base.entity.Auditable;
@@ -21,12 +21,12 @@ import java.util.Set;
 public class Report extends Auditable {
 
     @ManyToMany
-    Set<Address> address;
+    private Set<Address> addresses;
 
     @Lob
     @Column(name = "image", length = Integer.MAX_VALUE, nullable = false)
     private byte[] image;
 
-//    Litter instance should be injected as well
+    //    Litter instance should be injected as well
 
 }

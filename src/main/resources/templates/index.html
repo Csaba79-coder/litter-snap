@@ -18,41 +18,18 @@
 <body>
 
 <div class="background-overlay"></div>
-
 <div class="container-fluid">
     <!-- Button to trigger the modal -->
     <div class="row justify-content-end m-3">
         <div class="btn-group col-12 col-md-4 col-lg-2">
-            <button class="btn btn-success btn-sm btn-block m-1" data-bs-toggle="modal" data-bs-target="#generalModal">
+            <button class="btn btn-success btn-sm btn-block m-1" data-bs-toggle="modal" data-bs-target="#signInModal">
                 LogIn
             </button>
-            <button class="btn btn-warning btn-sm btn-block m-1" data-bs-toggle="modal" data-bs-target="#generalModal">
+            <button class="btn btn-warning btn-sm btn-block m-1" data-bs-toggle="modal" data-bs-target="#signUpModal">
                 SignUp
             </button>
         </div>
     </div>
-
-    <!-- Modal -->
-
-    <div class="modal fade" id="generalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <!-- Modal content goes here -->
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div th:if="${view}" class="modal-body">
-                    <!-- Modal body content goes here -->
-                    <div th:insert="~{${view}}"></div>
-                    <form>
-                        <!-- Form fields and elements -->
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <!--    Middle Part -->
     <div class="row justify-content-center align-items-center min-vh-100">
@@ -70,17 +47,15 @@
                     </div>
                 </div>
             </div>
-
-            <form th:action="@{/reportForm}" method="post" >
-                <input type="text" class="form-control" placeholder="Enter your town/city and press enter" name="city">
-            </form>
+            <input type="text" class="form-control" placeholder="Enter your town/city and press enter" name="city"
+                   id="cityInput">
         </div>
     </div>
 
     <!--    Carusel-->
     <div class="row mt-5">
         <div class="col">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div id="mainCarousel" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <!-- Generate indicators based on the number of carousel items -->
                     <li th:each="image, index : ${images}" data-target="#carouselExampleIndicators"

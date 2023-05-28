@@ -1,0 +1,41 @@
+
+<!-- Modal -->
+
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="add-report-modal-content">
+        <form th:action="@{/createReport}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="firstLine">First Line</label>
+                <input type="text" class="form-control" id="firstLine" name="firstLine" required>
+            </div>
+            <div class="form-group">
+                <label for="postCode">Post Code</label>
+                <input type="text" class="form-control" id="postCode" name="postCode" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" name="city" required th:value="${city}">
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" class="form-control" id="country" name="country" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="photo">Photo</label>
+                <input type="file" class="form-control-file" id="photo" name="photo" accept="image/*" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+
