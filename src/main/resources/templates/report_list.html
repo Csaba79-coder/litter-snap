@@ -32,22 +32,32 @@
             </thead>
 
             <tbody>
-            <tr th:each="report : ${reports}">
-                <td th:text="${report.getCreatedAt()}"></td>
-                <td th:text="${report.getCreatedBy()}"></td>
-                <td th:text="${report.getAddress().getFirstLine()}"></td>
-                <td th:text="${report.getAddress().getPostCode()}"></td>
-                <td th:text="${report.getStatus()}"></td>
 
-                <td>
-                    <div class="btn-group col-12 col-md-4 col-lg-2">
-                        <a th:href="@{/thy/{id}(id=${report.id})}" class="btn btn-success btn-sm btn-block m-1">View</a>
-                        <a th:href="@{/thy/{id}/edit(id=${report.id})}" class="btn btn-warning btn-sm btn-block m-1">Edit</a>
-                        <a th:href="@{/thy/{id}/delete(id=${report.id})}" class="btn btn-danger btn-sm btn-block m-1">Delete</a>
-                    </div>
-                </td>
+            <div th:if="${not #lists.isEmpty(reports)}">
 
-            </tr>
+                <tr th:each="report : ${reports}">
+                    <td th:text="${report.getCreatedAt()}"></td>
+                    <td th:text="${report.getCreatedBy()}"></td>
+                    <td th:text="${report.getAddress().getFirstLine()}"></td>
+                    <td th:text="${report.getAddress().getPostCode()}"></td>
+                    <td th:text="${report.getStatus()}"></td>
+
+                    <td>
+                        <div class="btn-group col-12 col-md-4 col-lg-2">
+                            <a th:href="@{/thy/{id}(id=${report.id})}" class="btn btn-success btn-sm btn-block m-1">View</a>
+                            <a th:href="@{/thy/{id}/edit(id=${report.id})}" class="btn btn-warning btn-sm btn-block m-1">Edit</a>
+                            <a th:href="@{/thy/{id}/delete(id=${report.id})}" class="btn btn-danger btn-sm btn-block m-1">Delete</a>
+                        </div>
+                    </td>
+
+                </tr>
+            </div>
+            <div th:if = "${#lists.isEmpty(reports)}" >
+                <p>No data</p>
+            </div>
+
+
+
             </tbody>
         </table>
     </div>

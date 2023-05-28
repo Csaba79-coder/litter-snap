@@ -1,4 +1,4 @@
-package com.csaba79coder.littersnap.controller;
+package com.csaba79coder.littersnap.view;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
