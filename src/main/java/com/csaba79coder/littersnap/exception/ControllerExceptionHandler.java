@@ -5,6 +5,7 @@ import jakarta.mail.SendFailedException;
 import org.modelmapper.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.InputMismatchException;
@@ -15,6 +16,7 @@ import static com.csaba79coder.littersnap.value.ErrorCode.LS_001;
 import static com.csaba79coder.littersnap.value.ErrorCode.LS_002;
 import static com.csaba79coder.littersnap.value.ErrorCode.LS_003;
 
+@ControllerAdvice
 public class ControllerExceptionHandler {
 
     @ExceptionHandler(value = {NoSuchElementException.class})
