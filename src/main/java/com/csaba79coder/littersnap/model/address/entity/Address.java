@@ -1,7 +1,7 @@
 package com.csaba79coder.littersnap.model.address.entity;
 
 import com.csaba79coder.littersnap.model.base.entity.Auditable;
-import com.csaba79coder.littersnap.model.report.entity.Report;
+import com.csaba79coder.littersnap.model.litter.entity.Litter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,7 +30,7 @@ public class Address extends Auditable {
     @Column(name = "country")
     private String country;
 
-    @OneToMany(mappedBy = "address")
-    private List<Report> reports;
+    @ManyToMany
+    private List<Litter> litters;
 
 }

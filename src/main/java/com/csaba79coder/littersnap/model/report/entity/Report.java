@@ -1,14 +1,12 @@
 package com.csaba79coder.littersnap.model.report.entity;
 
-import com.csaba79coder.littersnap.model.address.entity.Address;
 import com.csaba79coder.littersnap.model.base.entity.Auditable;
-import com.csaba79coder.littersnap.value.LitterStatus;
+import com.csaba79coder.littersnap.model.litter.entity.Litter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 
 @Entity
@@ -21,15 +19,8 @@ import lombok.Setter;
 public class Report extends Auditable {
 
     @ManyToOne
-    private Address address;
-
-    @Lob
-    @Column(name = "image", length = Integer.MAX_VALUE, nullable = false)
-    private byte[] image;
-
-    private LitterStatus status;
-
-
+    @JoinColumn(name="litter_id", nullable=false)
+    private Litter litter;
     //    Litter instance should be injected as well
 
 }

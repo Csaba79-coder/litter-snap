@@ -4,7 +4,6 @@ import com.csaba79coder.littersnap.model.address.dto.AddressModel;
 import com.csaba79coder.littersnap.model.report.dto.ReportModel;
 import com.csaba79coder.littersnap.model.report.entity.Report;
 import com.csaba79coder.littersnap.model.report.service.ReportService;
-import com.csaba79coder.littersnap.util.ImageUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,18 +15,18 @@ import java.util.UUID;
 
 @Controller
 @RequestMapping("/thy")
-public class ReportController {
+public class ReportViewController {
 
     private final ReportService reportService;
 
-    public ReportController(ReportService reportService) {
+    public ReportViewController(ReportService reportService) {
         this.reportService = reportService;
     }
 
 
     @GetMapping("/reports")
     public String getAllReports(Model model) {
-        List<ReportModel> reports = reportService.findAllReports();
+        List<ReportModel> reports = reportService.getAllReports();
 
         if(reports.isEmpty()) {
             return "error_page";
@@ -39,7 +38,7 @@ public class ReportController {
 
     @GetMapping("/reports/{id}")
     public String getReportById(@PathVariable UUID id, Model model) {
-        ReportModel currentReport = reportService.findReportByID(id);
+        ReportModel currentReport = reportService.getReportById(id);
 
         if (currentReport == null) {
             return "error_page";
@@ -59,14 +58,14 @@ public class ReportController {
     public String createReport(@ModelAttribute("report") Report report, @RequestParam("image") MultipartFile file) throws IOException {
 
         AddressModel addressModel = new AddressModel();
-       ReportModel currentReportModel = new ReportModel(addressModel, ImageUtil.compressImage(file.getBytes()));
+//       ReportModel currentReportModel = new ReportModel(addressModel, ImageUtil.compressImage(file.getBytes()));
 //        reportService.addNewReport(currentReportModel);
         return "redirect:/reports"; // Redirect to the URL for displaying all reports after successful creation
     }
 
     @GetMapping("/reports/{id}/edit")
     public String showEditForm(@PathVariable UUID id, Model model) {
-        ReportModel currentReport = reportService.findReportByID(id);
+        ReportModel currentReport = reportService.getReportById(id);
         if (currentReport == null) {
             return "error_page";
         } else {
@@ -77,13 +76,13 @@ public class ReportController {
 
     @PostMapping("/reports/{id}/edit")
     public String updateReport(@PathVariable UUID id, @ModelAttribute("report") Report report) {
-        reportService.addNewReport(report);
+//        reportService.addNewReport(report);
         return "redirect:/reports"; // Redirect to the URL for displaying all reports after successful update
     }
 
     @GetMapping("/reports/{id}/delete")
     public String deleteReport(@PathVariable UUID id) {
-        reportService.deleteReportById(id);
+        reportService.deleteExistingReport(id);
         return "redirect:/reports"; // Redirect to the URL for displaying all reports after successful deletion
     }
 }
