@@ -50,7 +50,7 @@ public class LitterService {
             LitterModel existingLitter = Mapper.mapLitterEntityToModel(optionalExistingLitter.get());
 
             //To find out about addresses.
-            existingLitter.setAddresses(model.getAddresses());
+            existingLitter.setAddresses(model.getAddress());
             existingLitter.setDescription(model.getDescription());
             existingLitter.setImage(model.getImage());
 
