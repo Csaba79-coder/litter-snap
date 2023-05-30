@@ -21,6 +21,9 @@ public class LitterService {
 
     private final LitterRepository litterRepository;
 
+    //Image i will need @RequestParam("image") MultipartFile file
+
+
     public List<LitterModel> getAllLitters() {
         List<Litter> litters = litterRepository.findAll();
         return litters.stream()
@@ -42,15 +45,18 @@ public class LitterService {
     public LitterModel updateExistingLitter(UUID id, LitterCreateOrModifyModel model) {
         Optional<Litter> optionalExistingLitter = litterRepository.findById(id);
         if (optionalExistingLitter.isPresent()) {
-            Litter existingLitter = optionalExistingLitter.get();
-            //TODO
+
+            //Converting the litter to litterModel
+            LitterModel existingLitter = Mapper.mapLitterEntityToModel(optionalExistingLitter.get());
+
             //To find out about addresses.
-//            existingLitter.setAddresses();
+            existingLitter.setAddresses(model.getAddresses());
             existingLitter.setDescription(model.getDescription());
             existingLitter.setImage(model.getImage());
-            existingLitter.setStatus(model.getStatus());
 
-            Litter updatedLitter = litterRepository.save(existingLitter);
+            //Converting the model to entity and saving it.
+            Litter updatedLitter = litterRepository.save(Mapper.mapLitterModelToEntity(existingLitter));
+
             return Mapper.mapLitterEntityToModel(updatedLitter);
         }
         //TODO

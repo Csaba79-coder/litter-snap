@@ -37,13 +37,9 @@ public class ReportController {
         return ResponseEntity.notFound().build();  // Return 404 (Not Found) status
     }
 
-
     @PutMapping("/{id}")
-    public ResponseEntity<ReportModel> updateExistingReport(
-            @PathVariable("id") UUID id,
-            @RequestBody ReportModel model
-    ) {
-        return ResponseEntity.status(200).body(reportService.updateExistingReport(id,model));
+    public ResponseEntity<ReportModel> updateExistingReport(@PathVariable("id") UUID id, @RequestBody ReportModel model) {
+        return ResponseEntity.status(200).body(reportService.updateExistingReport(id, model));
     }
 
     @DeleteMapping("/{id}")

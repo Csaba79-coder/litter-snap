@@ -21,6 +21,7 @@ public class ReportService  {
     private final ReportRepository reportRepository;
 
 
+
     public List<ReportModel> getAllReports() {
         return reportRepository.findAll()
                 .stream()

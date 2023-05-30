@@ -12,23 +12,23 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/litters")
 @RequiredArgsConstructor
 public class LitterController {
 
     private final LitterService litterService;
 
-    @GetMapping("/litters")
+    @GetMapping
     public List<LitterModel> getAllLitters() {
         return litterService.getAllLitters();
     }
 
-    @PostMapping("/litters")
+    @PostMapping
     public ResponseEntity<LitterModel> addNewLitter(@RequestBody LitterCreateOrModifyModel litterModel) {
         return ResponseEntity.status(201).body(litterService.addNewLitter(litterModel));
     }
 
-    @GetMapping("/litters/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<LitterModel> getLitterById(@PathVariable("id") UUID id) {
         LitterModel litter = litterService.getLitterById(id);
         if (litter != null) {
@@ -37,18 +37,15 @@ public class LitterController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/litters/{id}")
-    public ResponseEntity<LitterModel> updateExistingLitter(
-            @PathVariable("id") UUID id,
-            @RequestBody LitterCreateOrModifyModel model
-    ) {
-        return ResponseEntity.status(200).body(litterService.updateExistingLitter(id,model));
+    @PutMapping("/{id}")
+    public ResponseEntity<LitterModel> updateExistingLitter(@PathVariable("id") UUID id, @RequestBody LitterCreateOrModifyModel model) {
+        return ResponseEntity.status(200).body(litterService.updateExistingLitter(id, model));
     }
 
-    @DeleteMapping("/litters/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteExistingLitter(@PathVariable("id") UUID id) {
         LitterModel litter = litterService.getLitterById(id);
-            litterService.deleteLitter(id);
+        litterService.deleteLitter(id);
 
         return ResponseEntity.status(204).build();
     }

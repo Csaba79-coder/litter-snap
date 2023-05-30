@@ -31,4 +31,8 @@ public class Mapper {
     public static LitterModel mapLitterEntityToModel(Litter entity) {
         return modelMapper.map(entity, LitterModel.class);
     }
+
+    public static Litter mapLitterModelToEntity(LitterModel model) {
+        return modelMapper.map(model, Litter.class);
+    }
 }

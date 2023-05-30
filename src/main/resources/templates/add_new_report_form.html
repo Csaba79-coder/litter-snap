@@ -6,14 +6,10 @@
             <div class="add-report-container">
                 <!-- Modal content -->
 
-                <form th:action="@{/create}" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
+                <form th:action="@{/create}" th:object="${reportModel}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="firstLine">First Line</label>
-                        <input type="text" class="form-control" id="firstLine" name="firstLine" required>
+                        <input type="text" class="form-control" id="firstLine" name="firstLine" th:field = "*{litter.getAddresses()}"required>
                     </div>
                     <div class="form-group">
                         <label for="postCode">Post Code</label>

@@ -4,11 +4,6 @@
             <!-- Modal content -->
 
             <form th:action="@{/reports/{id}/edit}" method="post" enctype="multipart/form-data" th:object="${report}">
-                <!-- Include the necessary input fields for editing the report -->
-<!--                <div class="form-group">-->
-<!--                    <label for="email">Email</label>-->
-<!--                    <input type="email" class="form-control" id="email" name="email" th:field="${#}" required>-->
-<!-- Fill this when will ahve the user. TODO-->
                 <div class="form-group">
                     <label for="firstLine">First Line</label>
                     <input type="text" class="form-control" id="firstLine" name="firstLine" th:field="${report.getAddress().getFirstLine()}" required>

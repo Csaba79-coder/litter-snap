@@ -11,5 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LitterAdminModifyModel {
+
     private LitterStatus status;
+
 }
