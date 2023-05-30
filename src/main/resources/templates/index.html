@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    <!--    Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Litter Snap</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
+    <title>Image Slider</title>
+    <style>
+        .slider-container {
+            width: 600px;
+            height: 150px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider-track {
+            display: flex;
+            width: max-content;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .slider-item {
+            flex: 0 0 100px;
+            height: 100px;
+            margin: 0 10px;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .add-image-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 100px;
+            margin: 0 10px;
+            border: 1px dashed #999;
+            cursor: pointer;
+        }
+
+        .add-image-button:hover {
+            background-color: #eee;
+        }
+
+        .add-image-button span {
+            font-size: 20px;
+            color: #999;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .slider-nav button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<div class="background-overlay"></div>
+
+<div class="container-fluid">
+
+    <div class="row justify-content-end m-3">
+        <div class="btn-group col-12 col-md-4 col-lg-2">
+            <button type="button" class="btn btn-primary">Sign in</button>
+            <button type="button" class="btn btn-success">Sign up</button>
+        </div>
+    </div>
+
+    <!--    Middle Part -->
+    <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-12 col-md-8 col-lg-6">
+
+            <div class="container logo-and-slogo-container">
+                <div class="row ">
+                    <div class="col-7 col-md-7 col-lg-7">
+                        <!-- Content of the first column -->
+                        <span class="input-label-logo">LitterSnap</span>
+                        <span class="input-label-slogan">If you can see it, you can fix it...</span>
+                    </div>
+                    <div class="col-5 col-md-5 col-lg-5">
+                        <img src="/static/img/webpage/ManAndPhone.png" alt="Image" class="man-with-the-phone-icon">
+                    </div>
+                </div>
+            </div>
+
+            <input type="text" class="form-control" placeholder="Enter your town/city and press enter">
+        </div>
+    </div>
+
+    <!--    Carusel-->
+    <div class="row mt-5">
+        <div class="col">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <!-- Generate indicators based on the number of carousel items -->
+                    <li th:each="image, index : ${images}" data-target="#carouselExampleIndicators" data-slide-to="${index}" th:class="${index == 0} ? 'active' : ''"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <!-- Generate dynamic carousel items using Thymeleaf iteration -->
+                    <div th:each="image, index : ${images}" th:class="${index == 0} ? 'carousel-item active' : 'carousel-item'">
+                        <img th:src="${image.imageUrl}" class="d-block w-100" th:alt="${image.altText}">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+        integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+        integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -3,6 +3,7 @@ package com.csaba79coder.littersnap.model.base.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
@@ -10,6 +11,7 @@ import java.util.UUID;
 
 @MappedSuperclass
 @Getter
+@Setter
 public class Auditable extends Identifier {
 
     @CreationTimestamp
