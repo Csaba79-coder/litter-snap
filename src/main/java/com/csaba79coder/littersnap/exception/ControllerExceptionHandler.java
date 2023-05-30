@@ -15,6 +15,8 @@ import java.util.NoSuchElementException;
 import static com.csaba79coder.littersnap.value.ErrorCode.LS_001;
 import static com.csaba79coder.littersnap.value.ErrorCode.LS_002;
 import static com.csaba79coder.littersnap.value.ErrorCode.LS_003;
+import static com.csaba79coder.littersnap.value.ErrorCode.LS_004;
+import static com.csaba79coder.littersnap.value.ErrorCode.LS_005;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {
@@ -36,7 +38,12 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(value = {SendFailedException.class})
     public ResponseEntity<Object> handleSendFailedException(SendFailedException ex) {
-        return new ResponseEntity<>(responseBodyWithMessage(LS_003, ex.getMessage()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(responseBodyWithMessage(LS_004, ex.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = {IllegalArgumentException.class})
+    public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException ex) {
+        return new ResponseEntity<>(responseBodyWithMessage(LS_005, ex.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     private String responseBodyWithMessage(ErrorCode code, String message) {
