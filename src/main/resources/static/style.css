@@ -9,10 +9,14 @@
     background-image: url("images/background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.60;
+    opacity: 0.80;
 }
 .logo-and-slogo-container{
     position: relative;
+}
+
+.no_page_found_icon{
+    width: 300px;
 }
 
 

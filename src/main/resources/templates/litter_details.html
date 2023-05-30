@@ -1,0 +1,35 @@
+<div class="container">
+    <!-- Content for the litter details page -->
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class = "text-center">Litter Details</h1>
+            <hr>
+            <h4><span class="text-muted">Created At:</span></h4>
+            <p><span th:text="${litter.getCreatedAt()}"></span></p>
+
+            <h4><span class="text-muted">Created By:</span></h4>
+            <p><span th:text="${litter.getCreatedBy()}"></span></p>
+
+            <h4><span class="text-muted">Updated At:</span></h4>
+            <p><span th:text="${litter.getUpdatedAt()}"></span></p>
+
+            <h4><span class="text-muted">Updated By:</span></h4>
+            <p><span th:text="${litter.getUpdatedBy()}"></span></p>
+
+            <h4><span class="text-muted">Address:</span></h4>
+            <p><span th:text="${litter.getAddress().firstLine + ', ' +
+                                     litter.getAddress().postCode + ', ' +
+                                     litter.getAddress().city + ', ' +
+                                     litter.getAddress().country}"></span></p>
+
+            <h4><span class="text-muted">Description:</span></h4>
+            <p><span th:text="${litter.getDescription()}"></span></p>
+
+            <h4><span class="text-muted">Image:</span></h4>
+            <p><span th:text="${litter.getImage()}"></span></p>
+
+            <a href="#" onclick="window.location.href='/thy/litter'"
+               class="btn btn-primary mt-3">Back</a>
+        </div>
+    </div>
+</div>

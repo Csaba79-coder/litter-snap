@@ -29,7 +29,7 @@ public class ReportViewController {
             return "error_page";
         } else {
             model.addAttribute("reports", reports);
-            return "report_list"; // Replace with the actual view name for displaying the list of reports
+            return "litter_list"; // Replace with the actual view name for displaying the list of reports
         }
     }
 
@@ -41,7 +41,7 @@ public class ReportViewController {
             return "error_page";
         } else {
             model.addAttribute("report", currentReport);
-            return "report_details";
+            return "litter_details";
         }
     }
 
@@ -52,7 +52,7 @@ public class ReportViewController {
             return "error_page";
         } else {
             model.addAttribute("report", currentReport);
-            return "edit_report";
+            return "edit_litter";
         }
     }
 

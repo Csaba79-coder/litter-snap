@@ -22,7 +22,7 @@ public class LitterModel {
     private LocalDateTime updatedAt = LocalDateTime.now();
     private UUID createdBy = UUID.fromString("6772c9dc-a7be-4826-963a-e376074fd4e7");
     private UUID updatedBy = UUID.fromString("dbd58012-9ee7-47d5-8f87-9bbc91583009");
-    private AddressModel addresses;
+    private AddressModel address;
     private String description;
     private byte[] image;
     private List<ReportModel> reports;

@@ -3,6 +3,7 @@ package com.csaba79coder.littersnap.view;
 import com.csaba79coder.littersnap.model.litter.dto.LitterCreateOrModifyModel;
 import com.csaba79coder.littersnap.model.litter.dto.LitterModel;
 import com.csaba79coder.littersnap.model.litter.service.LitterService;
+import com.csaba79coder.littersnap.util.Mapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,13 +23,13 @@ public class LitterViewController {
 
     @GetMapping
     public String getAllLitters(Model model) {
-        List<LitterModel> reports = litterService.getAllLitters();
+        List<LitterModel> litters = litterService.getAllLitters();
 
-        if (reports.isEmpty()) {
+        if (litters.isEmpty()) {
             return "error_page";
         } else {
-            model.addAttribute("reports", reports);
-            return "litter_list"; // Replace with the actual view name for displaying the list of reports
+            model.addAttribute("litters", litters);
+            return "litter_list"; // Replace with the actual view name for displaying the list of litters
         }
     }
 
@@ -46,9 +47,32 @@ public class LitterViewController {
     }
 
     @PostMapping("/create")
-    public String addNewLitter(@ModelAttribute("litter") LitterCreateOrModifyModel litter) {
-        litterService.addNewLitter(litter);
+    public String addNewLitter(@ModelAttribute("litterModel") LitterCreateOrModifyModel litterModel) {
+        litterService.addNewLitter(litterModel);
         return "redirect:/litters";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable UUID id, Model model) {
+        LitterCreateOrModifyModel currentLitter = Mapper.mapModelToLitterCreateOrModifyModel(litterService.getLitterById(id));
+        if (currentLitter == null) {
+            return "error_page";
+        } else {
+            model.addAttribute("litter", currentLitter);
+            return "edit_litter";
+        }
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateReport(@PathVariable UUID id, @ModelAttribute("report") LitterCreateOrModifyModel litterModel) {
+        litterService.updateExistingLitter(id,litterModel);
+        return "redirect:/reports"; // Redirect to the URL for displaying all reports after successful update
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteReport(@PathVariable UUID id) {
+        litterService.deleteLitter(id);
+        return "redirect:/reports"; // Redirect to the URL for displaying all reports after successful deletion
     }
 
 

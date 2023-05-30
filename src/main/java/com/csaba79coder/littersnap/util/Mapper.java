@@ -28,6 +28,10 @@ public class Mapper {
         return modelMapper.map(model, Litter.class);
     }
 
+    public static LitterCreateOrModifyModel mapModelToLitterCreateOrModifyModel(LitterModel model) {
+        return modelMapper.map(model, LitterCreateOrModifyModel.class);
+    }
+
     public static LitterModel mapLitterEntityToModel(Litter entity) {
         return modelMapper.map(entity, LitterModel.class);
     }
