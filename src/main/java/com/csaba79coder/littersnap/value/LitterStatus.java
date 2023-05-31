@@ -1,10 +1,8 @@
 package com.csaba79coder.littersnap.value;
 
 public enum LitterStatus {
-
-    COLLECTED,
-    REMOVED,
     REPORTED,
-    UNREPORTED,
+    COMPLETED,
+    PROCESSING,
     NOT_FOUND
 }
