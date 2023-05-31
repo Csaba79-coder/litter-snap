@@ -1,19 +1,28 @@
-
+body{
+    background-color: #cacaca; /* Used if the image is unavailable */
+}
 .background-overlay {
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    top:0;
     z-index: -1;
     background-image: url("images/background.jpg");
-    background-color: #90a5b9; /* Used if the image is unavailable */
-    /*height: 500px; !* You must set a specified height *!*/
-    background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: contain; /* Resize the background image to cover the entire container */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    background-position: center; /* Center the background image */
+    height: 100vh; /* Use viewport height for full-screen height */
+    width: 99%; /* Set width to cover 90% of the container */
+    margin-left: 0.5%; /* Center the background horizontally by adding a margin to the left */
     opacity: 0.60;
 }
+
+/*Buttons control*/
+.fixed-buttons {
+    position: fixed;
+    top: 0;
+    right: 20px;
+    z-index: 999;
+}
+
 .logo-and-slogo-container{
     position: relative;
 }
@@ -28,24 +37,31 @@
     bottom: 20px;
     left: 1px;
     font-family: 'Niagara Solid', cursive;
-    font-size: 100px; /* Adjust the font size as needed */
-    color: #0f5c9b;
-    text-shadow: 2px 2px 4px rgba(231, 202, 16, 0.8);
+    font-size: 130px; /* Adjust the font size as needed */
+    color: #1c5486;
+    /*text-shadow: 5px 5px 10px rgb(246, 239, 153);*/
 }
+
+
 
 .input-label-slogan{
     position: absolute;
     bottom: 1px;
     left: 1px;
-    font-family: 'Segoe UI', cursive;
-    font-size: 31px; /* Adjust the font size as needed */
-    color: #7c007c;
-    text-shadow: 2px 2px 4px rgb(215, 65, 163);
+    font-family: 'Arial Black', sans-serif;
+    font-size: 20px; /* Adjust the font size as needed */
+    color: #070000;
+    text-shadow: 2px 2px 4px rgb(241, 193, 3);
 }
 
 .man-with-the-phone-icon{
     width:300px;
     opacity: 0.965;
+}
+
+.footer-overlay{
+    background-color: #cacaca; /* Used if the image is unavailable */
+    width: 100%;
 }
 
 

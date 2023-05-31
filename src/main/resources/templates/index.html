@@ -8,6 +8,9 @@
 
     <!-- Font Awesome CSS -->
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <!-- Include jQuery from Google CDN -->
     <link rel="stylesheet" th:href="@{/style.css}">
     <link th:src="@{/index.js}">
@@ -21,7 +24,7 @@
 <div class="container-fluid">
     <!-- Button to trigger the modal -->
     <div class="row justify-content-end m-3">
-        <div class="btn-group col-12 col-md-4 col-lg-2">
+        <div class="btn-group col-12 col-md-4 col-lg-2 fixed-buttons">
             <button class="btn btn-success btn-sm btn-block m-1" data-bs-toggle="modal" data-bs-target="#signInModal">
                 LogIn
             </button>
@@ -31,16 +34,16 @@
         </div>
     </div>
 
-<!--    &lt;!&ndash;    modal&ndash;&gt;-->
-<!--    <div id="addReportModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addReportModalLabel"-->
-<!--         aria-hidden="true">-->
-<!--        <div class="modal-dialog" role="document">-->
-<!--            <div class="modal-content">-->
-<!--                &lt;!&ndash; Content of the modal from add-report.html &ndash;&gt;-->
-<!--                <div th:include="add_litter_form :: modal-content"></div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+    <!--    &lt;!&ndash;    modal&ndash;&gt;-->
+    <!--    <div id="addReportModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addReportModalLabel"-->
+    <!--         aria-hidden="true">-->
+    <!--        <div class="modal-dialog" role="document">-->
+    <!--            <div class="modal-content">-->
+    <!--                &lt;!&ndash; Content of the modal from add-report.html &ndash;&gt;-->
+    <!--                <div th:include="add_litter_form :: modal-content"></div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
 
     <!--    Middle Part -->
     <div class="row justify-content-center align-items-center min-vh-100">
@@ -51,7 +54,7 @@
                     <div class="col-7 col-md-7 col-lg-7">
                         <!-- Content of the first column -->
                         <span class="input-label-logo">LitterSnap</span>
-                        <span class="input-label-slogan">If you can see it, you can fix it...</span>
+                        <span class="input-label-slogan">IF YOU CAN SEE IT, YOU CAN FIX IT...</span>
                     </div>
                     <div class="col-5 col-md-5 col-lg-5">
                         <img th:src="@{/images/ManAndPhone.png}" alt="Image" class="man-with-the-phone-icon">
@@ -64,33 +67,33 @@
         </div>
     </div>
 </div>
-    <!--    &lt;!&ndash;    Carusel&ndash;&gt;-->
-    <!--    <div class="row mt-5">-->
-    <!--        <div class="col">-->
-    <!--            <div id="mainCarousel" class="carousel slide" data-ride="carousel">-->
-    <!--                <ol class="carousel-indicators">-->
-    <!--                    &lt;!&ndash; Generate indicators based on the number of carousel items &ndash;&gt;-->
-    <!--                    <li th:each="image, index : ${images}" data-target="#carouselExampleIndicators"-->
-    <!--                        data-slide-to="${index}" th:class="${index == 0} ? 'active' : ''"></li>-->
-    <!--                </ol>-->
-    <!--                <div class="carousel-inner">-->
-    <!--                    &lt;!&ndash; Generate dynamic carousel items using Thymeleaf iteration &ndash;&gt;-->
-    <!--                    <div th:each="image, index : ${images}"-->
-    <!--                         th:class="${index == 0} ? 'carousel-item active' : 'carousel-item'">-->
-    <!--                        <img th:src="${image.imageUrl}" class="d-block w-100" th:alt="${image.altText}">-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">-->
-    <!--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-    <!--                    <span class="sr-only">Previous</span>-->
-    <!--                </a>-->
-    <!--                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">-->
-    <!--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-    <!--                    <span class="sr-only">Next</span>-->
-    <!--                </a>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
+<!--    &lt;!&ndash;    Carusel&ndash;&gt;-->
+<!--    <div class="row mt-5">-->
+<!--        <div class="col">-->
+<!--            <div id="mainCarousel" class="carousel slide" data-ride="carousel">-->
+<!--                <ol class="carousel-indicators">-->
+<!--                    &lt;!&ndash; Generate indicators based on the number of carousel items &ndash;&gt;-->
+<!--                    <li th:each="image, index : ${images}" data-target="#carouselExampleIndicators"-->
+<!--                        data-slide-to="${index}" th:class="${index == 0} ? 'active' : ''"></li>-->
+<!--                </ol>-->
+<!--                <div class="carousel-inner">-->
+<!--                    &lt;!&ndash; Generate dynamic carousel items using Thymeleaf iteration &ndash;&gt;-->
+<!--                    <div th:each="image, index : ${images}"-->
+<!--                         th:class="${index == 0} ? 'carousel-item active' : 'carousel-item'">-->
+<!--                        <img th:src="${image.imageUrl}" class="d-block w-100" th:alt="${image.altText}">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">-->
+<!--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--                    <span class="sr-only">Previous</span>-->
+<!--                </a>-->
+<!--                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">-->
+<!--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--                    <span class="sr-only">Next</span>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
@@ -98,5 +101,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
         integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
         crossorigin="anonymous"></script>
+
+<div class="footer-overlay">
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Vasile, Csaba and Kevin. Wiley Edge. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+
 </body>
 </html>
