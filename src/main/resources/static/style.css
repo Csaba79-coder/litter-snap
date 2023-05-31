@@ -12,7 +12,7 @@ body{
     height: 100vh; /* Use viewport height for full-screen height */
     width: 99%; /* Set width to cover 90% of the container */
     margin-left: 0.5%; /* Center the background horizontally by adding a margin to the left */
-    opacity: 0.60;
+    opacity: 0.50;
 }
 
 /*Buttons control*/
@@ -50,8 +50,8 @@ body{
     left: 1px;
     font-family: 'Arial Black', sans-serif;
     font-size: 20px; /* Adjust the font size as needed */
-    color: #070000;
-    text-shadow: 2px 2px 4px rgb(241, 193, 3);
+    color: darkmagenta;
+    /*text-shadow: 2px 2px 4px rgb(241, 193, 3);*/
 }
 
 .man-with-the-phone-icon{
@@ -70,11 +70,11 @@ body{
 /* Media query for smaller viewports */
 @media (max-width: 576px) {
     .input-label-logo {
-        font-size: 60px;
+        font-size: 40px;
     }
 
     .input-label-slogan {
-        font-size: 20px;
+        font-size: 12px;
     }
 
     .man-with-the-phone-icon {
