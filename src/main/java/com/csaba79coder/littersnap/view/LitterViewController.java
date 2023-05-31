@@ -14,22 +14,13 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-//@RequestMapping("/thy/litter")
+@RequestMapping("/thy/litter")
 public class LitterViewController {
 
     private final LitterService litterService;
 
     public LitterViewController(LitterService litterService) {
         this.litterService = litterService;
-    }
-
-//    @GetMapping("/test")
-    @GetMapping("/login")
-    public String test(Model model) {
-        // Add necessary data to the model
-        model.addAttribute("view", "add_litter_form");
-
-        return "index";
     }
 
 
