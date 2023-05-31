@@ -1,6 +1,10 @@
 ![img.png](/static/images/readme/banner-app.png)
 
 
+## Hosting plan
+
+### We plan to use our existing domain: csaba79coder.com
+
 ## Backend Dependencies
 
 - Java Development Kit - JDK 17
