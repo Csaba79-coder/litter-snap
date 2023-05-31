@@ -25,31 +25,41 @@
     <!-- Button to trigger the modal -->
     <div class="row justify-content-end m-3">
         <div class="btn-group col-12 col-md-4 col-lg-2 fixed-buttons">
-            <button class="btn btn-success btn-sm btn-block m-1" data-bs-toggle="modal" data-bs-target="#signInModal">
+            <a th:href="@{/login}" class="btn btn-success btn-sm btn-block m-1" data-bs-toggle="modal" data-bs-target="#signInModal">
                 LogIn
-            </button>
+            </a>
             <button class="btn btn-warning btn-sm btn-block m-1" data-bs-toggle="modal" data-bs-target="#signUpModal">
                 SignUp
             </button>
         </div>
     </div>
 
-        <!--    modal-->
-        <div id="addReportModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addReportModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <!-- Content of the modal from add-report.html -->
-                    <div th:include="add_litter_form :: modal-content"></div>
+    <div th:if="${view != null}" class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signInModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Dynamic Content Placeholder -->
+                    <div th:replace="${view}"></div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div th:if="${view == null}">
+
+    </div>
+
+
 
     <!--    Middle Part -->
     <div class="row justify-content-center align-items-center min-vh-100">
         <div class="col-12 col-md-8 col-lg-6">
 
-            <div class="container logo-and-slogo-container">
+            <div class="container logo-and-slogan-container">
                 <div class="row ">
                     <div class="col-7 col-md-7 col-lg-7">
                         <!-- Content of the first column -->

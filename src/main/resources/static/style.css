@@ -23,7 +23,7 @@ body{
     z-index: 999;
 }
 
-.logo-and-slogo-container{
+.logo-and-slogan-container{
     position: relative;
 }
 
@@ -64,6 +64,10 @@ body{
     width: 100%;
 }
 
+
+.input-label-logo-welcome-page{
+
+}
 
 /*All media queries*/
 
