@@ -7,9 +7,12 @@
     left: 0;
     z-index: -1;
     background-image: url("images/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0.80;
+    background-color: #90a5b9; /* Used if the image is unavailable */
+    /*height: 500px; !* You must set a specified height *!*/
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: contain; /* Resize the background image to cover the entire container */
+    opacity: 0.60;
 }
 .logo-and-slogo-container{
     position: relative;
