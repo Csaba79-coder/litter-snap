@@ -1,5 +1,6 @@
 package com.csaba79coder.littersnap.view;
 
+import com.csaba79coder.littersnap.model.address.entity.Address;
 import com.csaba79coder.littersnap.model.litter.dto.LitterCreateOrModifyModel;
 import com.csaba79coder.littersnap.model.litter.dto.LitterModel;
 import com.csaba79coder.littersnap.model.litter.service.LitterService;
@@ -7,6 +8,7 @@ import com.csaba79coder.littersnap.util.Mapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.UUID;
@@ -47,8 +49,10 @@ public class LitterViewController {
     }
 
     @PostMapping("/create")
-    public String addNewLitter(@ModelAttribute("litterModel") LitterCreateOrModifyModel litterModel) {
-        litterService.addNewLitter(litterModel);
+    public String addNewLitter(@ModelAttribute("litter") LitterCreateOrModifyModel litterModel,
+                               @ModelAttribute("address") Address address,
+                               @RequestParam("file") MultipartFile file) {
+        litterService.addNewLitter(litterModel, address, file);
         return "redirect:/litters";
     }
 
@@ -64,13 +68,13 @@ public class LitterViewController {
     }
 
     @PostMapping("/edit/{id}")
-    public String updateReport(@PathVariable UUID id, @ModelAttribute("report") LitterCreateOrModifyModel litterModel) {
+    public String updateLitter(@PathVariable UUID id, @ModelAttribute("report") LitterCreateOrModifyModel litterModel) {
         litterService.updateExistingLitter(id,litterModel);
         return "redirect:/reports"; // Redirect to the URL for displaying all reports after successful update
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteReport(@PathVariable UUID id) {
+    public String deleteLitter(@PathVariable UUID id) {
         litterService.deleteLitter(id);
         return "redirect:/reports"; // Redirect to the URL for displaying all reports after successful deletion
     }

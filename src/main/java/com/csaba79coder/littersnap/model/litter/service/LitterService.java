@@ -1,13 +1,19 @@
 package com.csaba79coder.littersnap.model.litter.service;
 
+import com.csaba79coder.littersnap.model.address.entity.Address;
+import com.csaba79coder.littersnap.model.address.persitence.AddressRepository;
 import com.csaba79coder.littersnap.model.litter.dto.LitterCreateOrModifyModel;
 import com.csaba79coder.littersnap.model.litter.dto.LitterModel;
 import com.csaba79coder.littersnap.model.litter.entity.Litter;
 import com.csaba79coder.littersnap.model.litter.persistence.LitterRepository;
+import com.csaba79coder.littersnap.util.ImageUtil;
 import com.csaba79coder.littersnap.util.Mapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -20,6 +26,8 @@ public class LitterService {
 
     private final LitterRepository litterRepository;
 
+    private final AddressRepository addressRepository;
+
     //Image i will need @RequestParam("image") MultipartFile file
 
 
@@ -30,15 +38,35 @@ public class LitterService {
                 .collect(Collectors.toList());
     }
 
-    public LitterModel addNewLitter(LitterCreateOrModifyModel litterModel) {
-        Litter litterEntity = Mapper.mapLitterCreateOrModifyModelToEntity(litterModel);
+    public LitterModel addNewLitter(LitterCreateOrModifyModel litterModel, Address address, MultipartFile file) {
+        Optional<Address> addressOptional = addressRepository.findAddressByCityContainingIgnoreCaseAndCountryContainingIgnoreCaseAndPostCodeAndFirstLineContainsIgnoreCase(
+                address.getCity(), address.getCountry(), address.getPostCode(), address.getFirstLine());
+        if (addressOptional.isPresent()) {
+            address = addressOptional.get();
+        } else {
+            address = addressRepository.save(address);
+        }
+        Litter litterEntity = new Litter();
+        litterEntity.setAddress(address); //TODO set an incoming address also here! if address is not found in entiy new must be created
+        litterEntity.setDescription(litterModel.getDescription());
+        try {
+            litterEntity.setImage(ImageUtil.decompressImage(file.getBytes())); // saving to database, so decompressing!!!
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         Litter savedLitterEntity = litterRepository.save(litterEntity);
         return Mapper.mapLitterEntityToModel(savedLitterEntity);
     }
 
     public LitterModel getLitterById(UUID id) {
-        Optional<Litter> optionalLitter = litterRepository.findById(id);
-        return optionalLitter.map(Mapper::mapLitterEntityToModel).orElse(null);
+        Optional<LitterModel> model = litterRepository.findById(id).map(Mapper::mapLitterEntityToModel);
+        if (model.isPresent()) {
+            return model.get();
+        } else {
+            String message = String.format("Litter with id %s not found", id);
+            log.error(message);
+            throw new RuntimeException(message);
+        }
     }
 
     public LitterModel updateExistingLitter(UUID id, LitterCreateOrModifyModel model) {

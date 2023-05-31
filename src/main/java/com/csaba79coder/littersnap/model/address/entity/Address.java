@@ -30,7 +30,6 @@ public class Address extends Auditable {
     @Column(name = "country")
     private String country;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "address")
     private List<Litter> litters;
-
 }
