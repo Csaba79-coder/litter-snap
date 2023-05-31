@@ -50,7 +50,7 @@ public class LitterService {
         litterEntity.setAddress(address); //TODO set an incoming address also here! if address is not found in entiy new must be created
         litterEntity.setDescription(litterModel.getDescription());
         try {
-            litterEntity.setImage(ImageUtil.decompressImage(file.getBytes())); // saving to database, so decompressing!!!
+            litterEntity.setImage(ImageUtil.compressImage(file.getBytes())); // Compressing the image before saving
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

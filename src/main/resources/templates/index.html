@@ -24,16 +24,33 @@
 <div class="container-fluid">
     <div class="row justify-content-end m-3">
         <div class="btn-group col-12 col-md-4 col-lg-2 fixed-buttons">
-            <button class="btn btn-success btn-sm btn-block m-1" data-bs-toggle="modal"
-                    data-bs-target="#addLitterModal">LogIn
-            </button>
+<!--            <button class="btn btn-success btn-sm btn-block m-1" data-bs-toggle="modal"-->
+<!--                    data-bs-target="#addLitterModal">LogIn-->
+<!--            </button>-->
             <button class="btn btn-warning btn-sm btn-block m-1">
                 SignUp
             </button>
         </div>
     </div>
+    <button class="btn btn-primary btn-sm btn-block m-1" data-bs-toggle="modal" data-bs-target="#addLitterModal">
+        TestAddButton
+    </button>
+    <button class="btn btn-warning btn-sm btn-block m-1" data-bs-toggle="modal" data-bs-target="#editLitterModal">
+        TestEditButton
+    </button>
+    <button class="btn btn-secondary btn-sm btn-block m-1" data-bs-toggle="modal" data-bs-target="#showLitterListModal">
+        Test Show List Modal
+    </button>
+
+    <button class="btn btn-danger btn-sm btn-block m-1" data-bs-toggle="modal" data-bs-target="#showLitterDetailsModal">
+        Test Litter Details
+    </button>
 
     <div th:replace="add_litter_form"></div>
+    <div th:replace="edit_litter"></div>
+    <div th:replace="litter_list"></div>
+    <div th:replace="litter_details"></div>
+
     <!--    Middle Part -->
     <div class="row justify-content-center align-items-center min-vh-100">
         <div class="col-12 col-md-8 col-lg-6">
