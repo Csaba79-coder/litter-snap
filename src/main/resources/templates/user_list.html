@@ -1,0 +1,46 @@
+<div class="container mt-4 bg-white">
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id:</th>
+                        <th>CreatedAt</th>
+                        <th>UpdatedAt</th>
+                        <th>CreatedBy</th>
+                        <th>UpdatedBy</th>
+                        <th>Email</th>
+                        <th>FirstName</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${not #lists.isEmpty(users)}" th:each="user : ${users}">
+                        <td th:text="${user.getId()}"></td>
+                        <td th:text="${user.getCreatedAt()}"></td>
+                        <td th:text="${user.getUpdatedAt()}"></td>
+                        <td th:text="${user.getCreatedBy()}"></td>
+                        <td th:text="${user.getUpdatedBy()}"></td>
+                        <td th:text="${user.getEmail()}"></td>
+                        <td th:text="${user.getFirstName()}"></td>
+                        <td th:text="${user.getRole()}"></td>
+                        <td>
+                            <div class="btn-group">
+                                <a th:href="" class="btn btn-success btn-sm">View</a>
+                                <a th:href="" class="btn btn-warning btn-sm">Edit</a>
+                                <a th:href="" class="btn btn-danger btn-sm">Delete</a>
+                                <a th:href="" class="btn btn-secondary btn-sm">Change Status</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(users)}">
+                        <td colspan="6"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
