@@ -1,9 +1,10 @@
-body{
+body {
     background-color: #cacaca; /* Used if the image is unavailable */
 }
+
 .background-overlay {
     position: fixed;
-    top:0;
+    top: 0;
     z-index: -1;
     background-image: url("images/background.jpg");
     background-repeat: no-repeat; /* Do not repeat the image */
@@ -23,16 +24,15 @@ body{
     z-index: 999;
 }
 
-.logo-and-slogan-container{
+.logo-and-slogan-container {
     position: relative;
 }
 
-.no_page_found_icon{
+.no_page_found_icon {
     width: 300px;
 }
 
-
-.input-label-logo{
+.input-label-logo {
     position: absolute;
     bottom: 20px;
     left: 1px;
@@ -42,9 +42,7 @@ body{
     /*text-shadow: 5px 5px 10px rgb(246, 239, 153);*/
 }
 
-
-
-.input-label-slogan{
+.input-label-slogan {
     position: absolute;
     bottom: 1px;
     left: 1px;
@@ -54,20 +52,26 @@ body{
     /*text-shadow: 2px 2px 4px rgb(241, 193, 3);*/
 }
 
-.man-with-the-phone-icon{
-    width:300px;
+.man-with-the-phone-icon {
+    width: 300px;
     opacity: 0.965;
 }
 
-.footer-overlay{
+.footer-overlay {
     background-color: #cacaca; /* Used if the image is unavailable */
     width: 100%;
 }
 
-
-.input-label-logo-welcome-page{
+.input-label-logo-welcome-page {
 
 }
+
+/*Modal Container on index page*/
+
+/*.modal-dialog {*/
+/*    max-width: 90%;*/
+/*    margin: 10% auto auto;*/
+/*}*/
 
 /*All media queries*/
 
@@ -87,11 +91,11 @@ body{
 }
 
 /* Media query for responsiveness */
-@media (max-width: 768px) {
-    .popup-content {
-        width: 90%;
-    }
-}
+/*@media (max-width: 768px) {*/
+/*    .popup-content {*/
+/*        width: 90%;*/
+/*    }*/
+/*}*/
 
 
 

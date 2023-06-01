@@ -26,7 +26,7 @@
     <div class="row justify-content-end m-3">
         <div class="btn-group col-12 col-md-4 col-lg-2 fixed-buttons">
             <div class="d-flex justify-content-end align-items-center">
-                <div class="me-2">Welcome, <span th:text="${username}"></span></div>
+                <div class="me-2">Welcome, <span th:text="${firstName}"></span></div>
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-bars"></i>
@@ -40,26 +40,26 @@
         </div>
     </div>
 
-
-    <!--    Middle Part -->
-    <div class="row justify-content-center align-items-end min-vh-100">
+    <!-- Middle Part -->
+    <div class="row justify-content-end align-items-end min-vh-100">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="container logo-and-slogo-container">
                 <div class="row">
                     <div class="col-7 col-md-7 col-lg-7">
                         <!-- Content of the first column -->
-                        <span class="input-label-logo-welcome-page">LitterSnap</span>
+                        <span class="input-label-logo-welcome-page" >LitterSnap</span>
                         <br>
                         <br>
-                        <span class="input-label-slogan-welcome-page">IF YOU CAN SEE IT, YOU CAN FIX IT...</span>
+                        <span class="input-label-slogan-welcome-page" >IF YOU CAN SEE IT, YOU CAN FIX IT...</span>
                     </div>
                     <div class="col-5 col-md-5 col-lg-5 d-flex justify-content-end align-items-end">
-                        <img th:src="@{/images/ManAndPhone.png}" alt="Image" class="man-with-the-phone-icon">
+                        <img th:src="@{/images/ManAndPhone.png}" alt="Image" class="man-with-the-phone-icon" style="width: 20%;">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 </div>
 

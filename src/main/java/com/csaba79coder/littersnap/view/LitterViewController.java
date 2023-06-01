@@ -46,7 +46,7 @@ public class LitterViewController {
     @GetMapping("/create")
     public String showAddLitterForm(Model model) {
         model.addAttribute("litter", new LitterCreateOrModifyModel());
-        return "add_litter_form";
+        return "litter_add_form";
     }
 
     @PostMapping("/create")
@@ -54,7 +54,7 @@ public class LitterViewController {
                                @ModelAttribute("address") Address address,
                                @RequestParam("file") MultipartFile file) {
         litterService.addNewLitter(litterModel, address, file);
-        return "redirect:/litters";
+        return "redirect:/thy/litter";
     }
 
     @GetMapping("/edit/{id}")
@@ -64,7 +64,7 @@ public class LitterViewController {
             return "error_page";
         } else {
             model.addAttribute("litter", currentLitter);
-            return "edit_litter";
+            return "litter_edit_form";
         }
     }
 

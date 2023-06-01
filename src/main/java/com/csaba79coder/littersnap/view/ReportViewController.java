@@ -52,7 +52,7 @@ public class ReportViewController {
             return "error_page";
         } else {
             model.addAttribute("report", currentReport);
-            return "edit_litter";
+            return "litter_edit_form";
         }
     }
 

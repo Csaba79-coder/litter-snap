@@ -34,7 +34,12 @@ public class LitterService {
     public List<LitterModel> getAllLitters() {
         List<Litter> litters = litterRepository.findAll();
         return litters.stream()
-                .map(Mapper::mapLitterEntityToModel)
+                .map(litter -> {
+                    LitterModel litterModel = Mapper.mapLitterEntityToModel(litter);
+                    byte[] decompressedImage = ImageUtil.decompressImage(litter.getImage());
+                    litterModel.setImage(decompressedImage);
+                    return litterModel;
+                })
                 .collect(Collectors.toList());
     }
 
@@ -59,9 +64,13 @@ public class LitterService {
     }
 
     public LitterModel getLitterById(UUID id) {
-        Optional<LitterModel> model = litterRepository.findById(id).map(Mapper::mapLitterEntityToModel);
-        if (model.isPresent()) {
-            return model.get();
+        Optional<Litter> litterOptional = litterRepository.findById(id);
+        if (litterOptional.isPresent()) {
+            Litter litter = litterOptional.get();
+            LitterModel litterModel = Mapper.mapLitterEntityToModel(litter);
+            byte[] decompressedImage = ImageUtil.decompressImage(litter.getImage());
+            litterModel.setImage(decompressedImage);
+            return litterModel;
         } else {
             String message = String.format("Litter with id %s not found", id);
             log.error(message);
