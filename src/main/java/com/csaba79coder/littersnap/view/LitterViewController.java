@@ -42,7 +42,15 @@ public class LitterViewController {
 
         try {
             LitterModel litter = litterService.getLitterById(id);
-            model.addAttribute("litter", litter);
+            model.addAttribute("createdAt", litter.getCreatedAt());
+            model.addAttribute("updatedAt", litter.getUpdatedAt());
+            model.addAttribute("firstline", litter.getAddress().getFirstLine());
+            model.addAttribute("city", litter.getAddress().getCity());
+            model.addAttribute("country", litter.getAddress().getCountry());
+            model.addAttribute("postcode", litter.getAddress().getPostCode());
+            model.addAttribute("description", litter.getDescription());
+            model.addAttribute("image", litter.getImage());
+            model.addAttribute("status", litter.getStatus());
             return "litter_details";
         } catch (NoSuchElementException e) {
             model.addAttribute("errorMessage", e.getMessage());
