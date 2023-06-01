@@ -1,60 +1,56 @@
-<div class="modal fade" id="editLitterModal" tabindex="-1" aria-labelledby="editLitterModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal header -->
-            <div class="modal-header">
-                <h5 class="modal-title" id="addLitterModalLabel">Edit Litter</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+<div class="container mt-4 bg-white">
+    <div class="row">
+        <div class="col">
+            <a th:href="@{/thy/litter}">Back</a>
+            <form th:action="@{thy/litter/edit/{id}(id=${id})}" method="post"
+                  enctype="multipart/form-data">
 
-            <!-- Modal body -->
-            <div class="modal-body">
-                <div class="d-flex justify-content-center">
-                    <div class="add-litter-container">
-<!--                        <form th:action="@{thy/litter/edit/{id}(id=${litter})}" method="post"-->
-<!--                              enctype="multipart/form-data">-->
-<!--                            <div class="form-group">-->
-<!--                                <label for="firstLine">First Line:</label>-->
-<!--                                <br>-->
-<!--                                <input type="text" class="form-control" id="firstLine" name="firstLine" required-->
-<!--                                       th:value="${litter != null ? litter.getAddress().firstLine : ''}">-->
-<!--                            </div>-->
-<!--                            <div class="form-group">-->
-<!--                                <label for="postCode">Post Code:</label>-->
-<!--                                <br>-->
-<!--                                <input type="text" class="form-control" id="postCode" name="postCode" required-->
-<!--                                       th:value="${litter != null ? litter.getAddress().postCode : ''}">-->
-<!--                            </div>-->
-<!--                            <div class="form-group">-->
-<!--                                <label for="city">City:</label>-->
-<!--                                <br>-->
-<!--                                <input type="text" class="form-control" id="city" name="city" required-->
-<!--                                       th:value="${litter != null ? litter.getAddress().city : ''}">-->
-<!--                            </div>-->
-<!--                            <div class="form-group">-->
-<!--                                <label for="country">Country:</label>-->
-<!--                                <br>-->
-<!--                                <input type="text" class="form-control" id="country" name="country" required-->
-<!--                                       th:value="${litter != null ? litter.getAddress().country : ''}">-->
-<!--                            </div>-->
-<!--                            <div class="form-group">-->
-<!--                                <label for="description">Description:</label>-->
-<!--                                <br>-->
-<!--                                <textarea class="form-control" id="description" name="description" required>${litter != null ? litter.description : ''}</textarea>-->
-<!--                            </div>-->
-<!--                            <div class="form-group mt-3">-->
-<!--                                <label for="image">Image:</label>-->
-<!--                                <br>-->
-<!--                                <input type="file" class="form-control-file mt-3" id="image" name="image"-->
-<!--                                       accept="image/*" required>-->
-<!--                            </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="firstLine">Id:</label>-->
+<!--                    <br>-->
+<!--                    <input type="text" class="form-control" id="id" name="firstLine" required-->
+<!--                           th:value="${id}">-->
+<!--                </div>-->
 
-<!--                            <button type="submit" class="btn btn-primary mt-3">Submit</button>-->
-<!--                        </form>-->
-
-                    </div>
+                <div class="form-group">
+                    <label for="firstLine">First Line:</label>
+                    <br>
+                    <input type="text" class="form-control" id="firstLine" name="firstLine" required
+                           th:placeholder="${firstline}">
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="postCode">Post Code:</label>
+                    <br>
+                    <input type="text" class="form-control" id="postCode" name="postCode" required
+                           th:placeholder="${postcode}">
+                </div>
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <br>
+                    <input type="text" class="form-control" id="city" name="city" required
+                           th:placeholder="${city}">
+                </div>
+                <div class="form-group">
+                    <label for="country">Country:</label>
+                    <br>
+                    <input type="text" class="form-control" id="country" name="country" required
+                           th:placeholder="${country}">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <br>
+                    <textarea class="form-control" id="description" name="description" required
+                              th:placeholder="${description}"></textarea>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="image">Image:</label>
+                    <br>
+                    <input type="file" class="form-control-file mt-3" id="image" name="image"
+                           accept="image/*" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </form>
         </div>
     </div>
 </div>

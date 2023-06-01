@@ -6,12 +6,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class LitterCreateOrModifyModel {
 
+    private UUID id;
     private AddressModel address;
     private String description;
     private byte[] image;

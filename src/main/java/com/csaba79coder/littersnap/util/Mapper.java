@@ -56,6 +56,7 @@ public class Mapper {
         model.setImage(ImageUtil.decompressImage(entity.getImage()));
         model.setAddress(mapAddressEntityToModel(entity.getAddress()));
         model.setDescription(entity.getDescription());
+        model.setStatus(entity.getStatus());
         return model;
     }
 
