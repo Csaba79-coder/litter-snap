@@ -1,0 +1,101 @@
+body {
+    background-color: #cacaca; /* Used if the image is unavailable */
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    background-image: url("images/background.jpg");
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    background-position: center; /* Center the background image */
+    height: 100vh; /* Use viewport height for full-screen height */
+    width: 99%; /* Set width to cover 90% of the container */
+    margin-left: 0.5%; /* Center the background horizontally by adding a margin to the left */
+    opacity: 0.50;
+}
+
+/*Buttons control*/
+.fixed-buttons {
+    position: fixed;
+    top: 0;
+    right: 20px;
+    z-index: 999;
+}
+
+.logo-and-slogan-container {
+    position: relative;
+}
+
+.no_page_found_icon {
+    width: 300px;
+}
+
+.input-label-logo {
+    position: absolute;
+    bottom: 20px;
+    left: 1px;
+    font-family: 'Niagara Solid', cursive;
+    font-size: 130px; /* Adjust the font size as needed */
+    color: #1c5486;
+    /*text-shadow: 5px 5px 10px rgb(246, 239, 153);*/
+}
+
+.input-label-slogan {
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 20px; /* Adjust the font size as needed */
+    color: darkmagenta;
+    /*text-shadow: 2px 2px 4px rgb(241, 193, 3);*/
+}
+
+.man-with-the-phone-icon {
+    width: 300px;
+    opacity: 0.965;
+}
+
+.footer-overlay {
+    background-color: #cacaca; /* Used if the image is unavailable */
+    width: 100%;
+}
+
+.input-label-logo-welcome-page {
+
+}
+
+/*Modal Container on index page*/
+
+/*.modal-dialog {*/
+/*    max-width: 90%;*/
+/*    margin: 10% auto auto;*/
+/*}*/
+
+/*All media queries*/
+
+/* Media query for smaller viewports */
+@media (max-width: 576px) {
+    .input-label-logo {
+        font-size: 40px;
+    }
+
+    .input-label-slogan {
+        font-size: 12px;
+    }
+
+    .man-with-the-phone-icon {
+        width: 230px;
+    }
+}
+
+/* Media query for responsiveness */
+/*@media (max-width: 768px) {*/
+/*    .popup-content {*/
+/*        width: 90%;*/
+/*    }*/
+/*}*/
+
+
+
