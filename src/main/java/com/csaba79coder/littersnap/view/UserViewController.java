@@ -3,6 +3,8 @@ package com.csaba79coder.littersnap.view;
 import com.csaba79coder.littersnap.model.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -11,4 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserViewController {
 
     private final UserService userService;
+
+    @GetMapping
+    public String renderAllUsers(Model model) {
+        model.addAttribute("users", userService.findAllUsers());
+        return "user";
+    }
 }
