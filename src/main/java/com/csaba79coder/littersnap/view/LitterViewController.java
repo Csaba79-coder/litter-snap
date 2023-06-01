@@ -7,9 +7,15 @@ import com.csaba79coder.littersnap.model.litter.service.LitterService;
 import com.csaba79coder.littersnap.util.Mapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Base64;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
@@ -40,7 +46,6 @@ public class LitterViewController {
 
     @GetMapping("/{id}")
     public String getLitterById(@PathVariable("id") UUID id, Model model) {
-
         try {
             LitterModel litter = litterService.getLitterById(id);
             model.addAttribute("id", litter.getId());
@@ -51,7 +56,11 @@ public class LitterViewController {
             model.addAttribute("country", litter.getAddress().getCountry());
             model.addAttribute("postcode", litter.getAddress().getPostCode());
             model.addAttribute("description", litter.getDescription());
-            model.addAttribute("image", litter.getImage());
+
+            // Convert the byte array to a base64 encoded string
+            String base64Image = Base64.getEncoder().encodeToString(litter.getImage());
+            model.addAttribute("image", base64Image);
+
             model.addAttribute("status", litter.getStatus());
             model.addAttribute("view", "litter_details");
             return "welcome";
@@ -64,7 +73,11 @@ public class LitterViewController {
     @GetMapping("/create")
     public String showAddLitterForm(Model model) {
         try {
-            model.addAttribute("litter", new LitterCreateOrModifyModel());
+            LitterCreateOrModifyModel litterModel = new LitterCreateOrModifyModel();
+
+            // Set any other necessary properties in the litterModel object
+
+            model.addAttribute("litter", litterModel);
             return "litter_add_form";
         } catch (NoSuchElementException e) {
             model.addAttribute("errorMessage", e.getMessage());
@@ -75,7 +88,8 @@ public class LitterViewController {
     @PostMapping("/create")
     public String addNewLitter(@ModelAttribute("litter") LitterCreateOrModifyModel litterModel,
                                @ModelAttribute("address") Address address,
-                               @RequestParam("file") MultipartFile file,Model model) {
+                               @RequestParam("file") MultipartFile file,
+                               Model model) {
         try {
             litterService.addNewLitter(litterModel, address, file);
             return "redirect:/thy/litter";
