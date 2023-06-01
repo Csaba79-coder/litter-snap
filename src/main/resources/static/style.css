@@ -114,5 +114,9 @@ body {
 /*    }*/
 /*}*/
 
-
+caption {
+    caption-side: top;
+    text-align: center;
+    color: green;
+}
 
