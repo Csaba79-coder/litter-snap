@@ -62,9 +62,44 @@ body {
     width: 100%;
 }
 
-.input-label-logo-welcome-page {
-
+/*Logo Control when user will be logged in*/
+.logged-logo {
+    position: relative;
 }
+
+.logged-logo .logged-logo-name {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    font-family: 'Niagara Solid', cursive;
+    font-size: 60px;
+    color: #1c5486;
+    text-align: center; /* Center the text horizontally */
+}
+
+.logged-logo .logged-logo-slogan {
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    right: 0;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 10px;
+    color: darkmagenta;
+    text-align: center; /* Center the text horizontally */
+}
+
+.logged-logo .man-with-the-phone-icon {
+    width: 300px;
+    opacity: 0.965;
+}
+
+.fixed-buttons {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
 
 /*Modal Container on index page*/
 

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -28,11 +29,16 @@ public class LitterService {
 
     private final AddressRepository addressRepository;
 
-    //Image i will need @RequestParam("image") MultipartFile file
-
-
     public List<LitterModel> getAllLitters() {
         List<Litter> litters = litterRepository.findAll();
+
+
+        if (litters.isEmpty()) {
+            String message = "Litter list is empty";
+            log.error(message);
+            throw new NoSuchElementException(message);
+        }
+
         return litters.stream()
                 .map(litter -> {
                     LitterModel litterModel = Mapper.mapLitterEntityToModel(litter);
@@ -52,12 +58,14 @@ public class LitterService {
             address = addressRepository.save(address);
         }
         Litter litterEntity = new Litter();
-        litterEntity.setAddress(address); //TODO set an incoming address also here! if address is not found in entiy new must be created
+        litterEntity.setAddress(address);
         litterEntity.setDescription(litterModel.getDescription());
         try {
             litterEntity.setImage(ImageUtil.compressImage(file.getBytes())); // Compressing the image before saving
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            String message = String.format("File not found."+ e.getMessage());
+            log.error(message);
+            throw new NoSuchElementException(e);
         }
         Litter savedLitterEntity = litterRepository.save(litterEntity);
         return Mapper.mapLitterEntityToModel(savedLitterEntity);
@@ -74,7 +82,7 @@ public class LitterService {
         } else {
             String message = String.format("Litter with id %s not found", id);
             log.error(message);
-            throw new RuntimeException(message);
+            throw new NoSuchElementException(message);
         }
     }
 
@@ -94,10 +102,12 @@ public class LitterService {
             Litter updatedLitter = litterRepository.save(Mapper.mapLitterModelToEntity(existingLitter));
 
             return Mapper.mapLitterEntityToModel(updatedLitter);
+        }else {
+            String message = String.format("Couldn't update. Litter with id %s not found", id);
+            log.error(message);
+            throw new NoSuchElementException(message);
         }
-        //TODO
-        //Case where liter not found
-        return null;
+
     }
 
     public void deleteLitter(UUID id) {
@@ -105,8 +115,9 @@ public class LitterService {
         if (optionalExistingLitter.isPresent()) {
             litterRepository.deleteById(id);
         } else {
-            //TODO
-            //Case where liter not found
+            String message = String.format("Couldn't delete. Litter with id %s not found", id);
+            log.error(message);
+            throw new NoSuchElementException(message);
         }
     }
 }

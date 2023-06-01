@@ -63,68 +63,70 @@
     <div class="container mt-4 bg-white">
         <div class="row">
             <div class="col">
-                <table class="table table-striped table-responsive">
-                    <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>By</th>
-                        <th>Address</th>
-                        <th>PostCode</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <div th:if="${not #lists.isEmpty(litters)}">
-                        <tr th:each="litter : ${litters}">
-                            <td th:text="${litter.getCreatedAt()}"></td>
-                            <td th:text="${litter.getCreatedBy()}"></td>
-                            <td th:text="${litter.getAddress().firstLine}"></td>
-                            <td th:text="${litter.getAddress().postCode}"></td>
-                            <td th:text="${litter.getStatus()}"></td>
-                            <td>
-                                <div class="btn-group">
-                                    <a th:href="@{/thy/{id}(id=${report.id})}" class="btn btn-success btn-sm">View</a>
-                                    <a th:href="@{/thy/{id}/edit(id=${report.id})}" class="btn btn-warning btn-sm">Edit</a>
-                                    <a th:href="@{/thy/{id}/delete(id=${report.id})}" class="btn btn-danger btn-sm">Delete</a>
-                                </div>
-                            </td>
-                        </tr>
-                    </div>
-                    <div th:if="${#lists.isEmpty(reports)}">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
                         <tr>
-                            <td colspan="6">
-                                <p>No data</p>
-                            </td>
+                            <th>Date</th>
+                            <th>By</th>
+                            <th>Address</th>
+                            <th>PostCode</th>
+                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
-                    </div>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        <div th:if="${not #lists.isEmpty(litters)}">
+                            <tr th:each="litter : ${litters}">
+                                <td th:text="${litter.getCreatedAt()}"></td>
+                                <td th:text="${litter.getCreatedBy()}"></td>
+                                <td th:text="${litter.getAddress().firstLine}"></td>
+                                <td th:text="${litter.getAddress().postCode}"></td>
+                                <td th:text="${litter.getStatus()}"></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a th:href="@{/thy/{id}(id=${litter.id})}"
+                                           class="btn btn-success btn-sm">View</a>
+                                        <a th:href="@{/thy/{id}/edit(id=${litter.id})}" class="btn btn-warning btn-sm">Edit</a>
+                                        <a th:href="@{/thy/{id}/delete(id=${litter.id})}" class="btn btn-danger btn-sm">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </div>
+                        <div th:if="${#lists.isEmpty(litters)}">
+                            <tr>
+                                <td colspan="6">
+
+                                </td>
+                            </tr>
+                        </div>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 
 
-
-    <!--    Middle Part -->
-    <div class="row justify-content-center align-items-end min-vh-100">
-        <div class="col-12 col-md-8 col-lg-6">
-            <div class="container logo-and-slogo-container">
+    <div class="row d-flex align-items-end justify-content-end min-vh-100">
+        <div class="col-12 col-md-8 col-lg-6 ">
+            <div class="container logged-logo">
                 <div class="row">
-                    <div class="col-7 col-md-7 col-lg-7">
+                    <div class="col-10 col-md-9 col-lg-9">
                         <!-- Content of the first column -->
-                        <span class="input-label-logo-welcome-page">LitterSnap</span>
+                        <span class="logged-logo-name">LitterSnap</span>
                         <br>
-                        <br>
-                        <span class="input-label-slogan-welcome-page">IF YOU CAN SEE IT, YOU CAN FIX IT...</span>
+                        <span class="logged-logo-slogan">IF YOU CAN SEE IT, YOU CAN FIX IT...</span>
                     </div>
-                    <div class="col-5 col-md-5 col-lg-5 d-flex justify-content-end align-items-end">
+                    <div class="col-2 col-md-3 col-lg-3 d-flex justify-content-end align-items-end">
                         <img th:src="@{/images/ManAndPhone.png}" alt="Image" class="man-with-the-phone-icon">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 
 </div>
 

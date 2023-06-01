@@ -16,10 +16,11 @@
 </head>
 
 <body>
-<!-- Your 404 content here -->
+
 <div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh;">
-    <h1>404 - Page Not Found</h1>
+    <h1>Error Page</h1>
     <br>
+    <p th:text = "${errorMessage}" ></p>
     <p class="text-center">Vasile, Csaba and Kev are on it now...</p>
     <img th:src="@{/images/404.jpg}" alt="Image" class="no_page_found_icon">
 </div>
