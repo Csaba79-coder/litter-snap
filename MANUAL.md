@@ -1,4 +1,4 @@
-![img.png](src/main/resources/static/img/readme/banner-app.png)
+![img.png](src/main/resources/static/readme/banner-app.png)
 
 # We use server port: 8081
 
@@ -8,7 +8,7 @@
 
 Step-by-step guide:
 
-![img.png](src/main/resources/static/img/manual/env-variable.png)
+![img.png](src/main/resources/static/manual/env-variable.png)
 
 <span style="color: cyan">The program is creating the empty database with tables (also in the MySQL server) without running any script (due to the setup of application.properties)!</span>
 <br>
@@ -29,7 +29,7 @@ Step-by-step guide:
 
 EMAIL_VALIDATOR value as follows:
 
-![img.png](src/main/resources/static/img/manual/regex-email-pattern.png)
+![img.png](src/main/resources/static/manual/regex-email-pattern.png)
 
 ```(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])```
 
@@ -42,4 +42,4 @@ PASSWORD_VALIDATOR value as follows:
 
 # Created by:
 
-![img_1.png](src/main/resources/static/img/readme/banner-team.png)
+![img_1.png](src/main/resources/static/readme/banner-team.png)

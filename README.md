@@ -1,4 +1,4 @@
-![img.png](/src/main/resources/static/img/readme/banner-app.png)
+![img.png](/static/images/readme/banner-app.png)
 
 # We use server port: 8081
 
@@ -39,4 +39,4 @@
 
 # Created by:
 
-![img_1.png](/src/main/resources/static/img/readme/banner-team.png)
+![img_1.png](/static/images/readme/banner-team.png)

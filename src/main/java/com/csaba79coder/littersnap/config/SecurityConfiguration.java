@@ -28,7 +28,7 @@ public class SecurityConfiguration {
                 .anyRequest().permitAll()  // Allow access to all endpoints
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/security/login")
                 .permitAll()
                 .and()
                 .logout()
