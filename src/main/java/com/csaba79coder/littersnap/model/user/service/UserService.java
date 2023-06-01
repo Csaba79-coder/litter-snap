@@ -15,6 +15,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -38,6 +39,7 @@ public class UserService {
         return userRepository.findAll()
                 .stream()
                 .map(Mapper::mapUserEntityToModel)
+                .sorted(Comparator.comparing(UserModel::getFirstName))
                 .collect(Collectors.toList());
     }
 
