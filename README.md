@@ -31,7 +31,6 @@
 - Spring Boot Test
 - Spring Boot Starter Test
 - Spring Boot Test Autoconfigure
-- JUnit 5
 
 ## Basic setup
 
