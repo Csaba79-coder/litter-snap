@@ -30,7 +30,8 @@ public class LitterViewController {
         try {
             List<LitterModel> litters = litterService.getAllLitters();
             model.addAttribute("litters", litters);
-            return "litter_list"; // Replace with the actual view name for displaying the list of litters
+            model.addAttribute("view", "litter_list");
+            return "welcome"; // Replace with the actual view name for displaying the list of litters
         } catch (NoSuchElementException e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "error_page"; // Redirect to the error page to display the error message
@@ -42,6 +43,7 @@ public class LitterViewController {
 
         try {
             LitterModel litter = litterService.getLitterById(id);
+            model.addAttribute("id", litter.getId());
             model.addAttribute("createdAt", litter.getCreatedAt());
             model.addAttribute("updatedAt", litter.getUpdatedAt());
             model.addAttribute("firstline", litter.getAddress().getFirstLine());
@@ -51,7 +53,8 @@ public class LitterViewController {
             model.addAttribute("description", litter.getDescription());
             model.addAttribute("image", litter.getImage());
             model.addAttribute("status", litter.getStatus());
-            return "litter_details";
+            model.addAttribute("view", "litter_details");
+            return "welcome";
         } catch (NoSuchElementException e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "error_page"; // Redirect to the error page to display the error message
@@ -85,9 +88,16 @@ public class LitterViewController {
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable UUID id, Model model) {
         try {
-            LitterCreateOrModifyModel currentLitter = Mapper.mapModelToLitterCreateOrModifyModel(litterService.getLitterById(id));
-            model.addAttribute("litter", currentLitter);
-            return "litter_edit_form";
+            LitterCreateOrModifyModel litter = Mapper.mapModelToLitterCreateOrModifyModel(litterService.getLitterById(id));
+            model.addAttribute("id", litter.getId());
+            model.addAttribute("firstline", litter.getAddress().getFirstLine());
+            model.addAttribute("city", litter.getAddress().getCity());
+            model.addAttribute("country", litter.getAddress().getCountry());
+            model.addAttribute("postcode", litter.getAddress().getPostCode());
+            model.addAttribute("description", litter.getDescription());
+            model.addAttribute("image", litter.getImage());
+            model.addAttribute("view","litter_edit_form");
+            return "welcome";
         } catch (NoSuchElementException e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "error_page"; // Redirect to the error page to display the error message
@@ -111,7 +121,7 @@ public class LitterViewController {
 
         try {
             litterService.deleteLitter(id);
-            return "redirect:/reports"; // Redirect to the URL for displaying all reports after successful deletion
+            return "redirect:/thy/litter"; // Redirect to the URL for displaying all reports after successful deletion
         } catch (NoSuchElementException e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "error_page"; // Redirect to the error page to display the error message

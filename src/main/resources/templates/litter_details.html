@@ -1,43 +1,38 @@
-<div class="modal fade" id="showLitterDetailsModal" tabindex="-1" aria-labelledby="addLitterModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal header -->
-            <div class="modal-header">
-                <h5 class="modal-title" id="addLitterModalLabel">Litter Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+<div class="container mt-4 bg-white">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <a th:href="@{/thy/litter}">Back</a>
+            <h4 style="text-align: center;">Litter Details</h4>
+            <hr>
+            <h4><span class="text-muted">ID:</span></h4>
+            <p><span th:text="${id}"></span></p>
 
-            <!-- Modal body -->
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <hr>
-                    <h4><span class="text-muted">Created At:</span></h4>
-                    <p><span th:text="${createdAt}"></span></p>
+            <h4><span class="text-muted">Created At:</span></h4>
+            <p><span th:text="${createdAt}"></span></p>
 
-                    <h4><span class="text-muted">Updated At:</span></h4>
-                    <p><span th:text="${updatedAt}"></span></p>
+            <h4><span class="text-muted">Updated At:</span></h4>
+            <p><span th:text="${updatedAt}"></span></p>
 
-                    <h4><span class="text-muted">Street:</span></h4>
-                    <p><span th:text="${firstline}"></span></p>
-                    <h4><span class="text-muted">City:</span></h4>
-                    <p><span th:text="${city}"></span></p>
-                    <h4><span class="text-muted">Country:</span></h4>
-                    <p><span th:text="${country}"></span></p>
-                    <h4><span class="text-muted">PostCode:</span></h4>
-                    <p><span th:text="${postcode}"></span></p>
+            <h4><span class="text-muted">Street:</span></h4>
+            <p><span th:text="${firstline}"></span></p>
+            <h4><span class="text-muted">City:</span></h4>
+            <p><span th:text="${city}"></span></p>
+            <h4><span class="text-muted">Country:</span></h4>
+            <p><span th:text="${country}"></span></p>
+            <h4><span class="text-muted">PostCode:</span></h4>
+            <p><span th:text="${postcode}"></span></p>
 
-                    <h4><span class="text-muted">Description:</span></h4>
-                    <p><span th:text="${description}"></span></p>
+            <h4><span class="text-muted">Description:</span></h4>
+            <p><span th:text="${description}"></span></p>
 
-                    <h4><span class="text-muted">Image:</span></h4>
-                    <p><span th:text="${image}"></span></p>
+            <h4><span class="text-muted">Image:</span></h4>
+            <p><span th:text="${image}"></span></p>
 
-                    <h4><span class="text-muted">Status:</span></h4>
-                    <p><span th:text="${status}"></span></p>
-                </div>
-            </div>
-
+            <h4><span class="text-muted">Status:</span></h4>
+            <p><span th:text="${status}"></span></p>
         </div>
     </div>
+
 </div>
+
 
