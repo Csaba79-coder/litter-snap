@@ -24,6 +24,30 @@ body {
     z-index: 999;
 }
 
+
+/*NavBar style*/
+ .navbar {
+     background-color: #f8f9fa;
+     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+ }
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff;
+}
+
+/*Logo Style*/
 .logo-and-slogan-container {
     position: relative;
 }
