@@ -26,7 +26,10 @@
             <p><span th:text="${description}"></span></p>
 
             <h4><span class="text-muted">Image:</span></h4>
-            <img th:src="@{'data:image/png;base64,' + ${image}}" alt="Litter Image" />
+            <div class="image-container" onclick="expandImage()">
+                <img th:src="@{'data:image/png;base64,' + ${image}}" alt="Litter Image" />
+            </div>
+
 
             <h4><span class="text-muted">Status:</span></h4>
             <p><span th:text="${status}"></span></p>
@@ -34,5 +37,12 @@
     </div>
 
 </div>
+
+<script>
+    function expandImage() {
+        var img = document.querySelector('.image-container img');
+        img.style.transform = img.style.transform === 'scale(1.2)' ? 'none' : 'scale(1.2)';
+    }
+</script>
 
 
