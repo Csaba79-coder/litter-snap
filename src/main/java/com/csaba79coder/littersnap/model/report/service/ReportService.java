@@ -22,7 +22,7 @@ public class ReportService  {
 
 
 
-    public List<ReportModel> getAllReports() {
+    public List<ReportModel> findAllReports() {
         return reportRepository.findAll()
                 .stream()
                 .map(Mapper::mapReportEntityToModel)
@@ -36,7 +36,7 @@ public class ReportService  {
     }
 
 
-    public ReportModel getReportById(UUID id) {
+    public ReportModel findReportById(UUID id) {
         Optional<Report> optionalReport = reportRepository.findReportById(id);
         if (optionalReport.isPresent()) {
             Report report = optionalReport.get();
@@ -47,7 +47,7 @@ public class ReportService  {
         return null;
     }
 
-    public ReportModel updateExistingReport(UUID id, ReportModel model) {
+    public ReportModel modifyAnExistingReport(UUID id, ReportModel model) {
         Optional<Report> optionalExistingReport = reportRepository.findById(id);
         if (optionalExistingReport.isPresent()) {
             Report existingReport = optionalExistingReport.get();

@@ -29,7 +29,7 @@ public class LitterService {
 
     private final AddressRepository addressRepository;
 
-    public List<LitterModel> getAllLitters() {
+    public List<LitterModel> findAllLitters() {
         List<Litter> litters = litterRepository.findAll();
 
 
@@ -71,7 +71,7 @@ public class LitterService {
         return Mapper.mapLitterEntityToModel(savedLitterEntity);
     }
 
-    public LitterModel getLitterById(UUID id) {
+    public LitterModel findLitterById(UUID id) {
         Optional<Litter> litterOptional = litterRepository.findById(id);
         if (litterOptional.isPresent()) {
             Litter litter = litterOptional.get();
@@ -86,7 +86,7 @@ public class LitterService {
         }
     }
 
-    public LitterModel updateExistingLitter(UUID id, LitterCreateOrModifyModel model) {
+    public LitterModel modifyAnExistingLitter(UUID id, LitterCreateOrModifyModel model) {
         Optional<Litter> optionalExistingLitter = litterRepository.findById(id);
         if (optionalExistingLitter.isPresent()) {
 
@@ -110,7 +110,7 @@ public class LitterService {
 
     }
 
-    public void deleteLitter(UUID id) {
+    public void deleteAnExistingLitter(UUID id) {
         Optional<Litter> optionalExistingLitter = litterRepository.findById(id);
         if (optionalExistingLitter.isPresent()) {
             litterRepository.deleteById(id);

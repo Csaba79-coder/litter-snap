@@ -22,7 +22,7 @@ public class LitterController {
 
     @GetMapping
     public List<LitterModel> getAllLitters() {
-        return litterService.getAllLitters();
+        return litterService.findAllLitters();
     }
 
     @PostMapping
@@ -34,7 +34,7 @@ public class LitterController {
 
     @GetMapping("/{id}")
     public ResponseEntity<LitterModel> getLitterById(@PathVariable("id") UUID id) {
-        LitterModel litter = litterService.getLitterById(id);
+        LitterModel litter = litterService.findLitterById(id);
         if (litter != null) {
             return new ResponseEntity<>(litter, HttpStatus.OK);
         }
@@ -44,13 +44,13 @@ public class LitterController {
     @PutMapping("/{id}")
     public ResponseEntity<LitterModel> updateExistingLitter(@PathVariable("id") UUID id,
                                                             @RequestBody LitterCreateOrModifyModel model) {
-        return ResponseEntity.status(200).body(litterService.updateExistingLitter(id, model));
+        return ResponseEntity.status(200).body(litterService.modifyAnExistingLitter(id, model));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteExistingLitter(@PathVariable("id") UUID id) {
-        LitterModel litter = litterService.getLitterById(id);
-        litterService.deleteLitter(id);
+        LitterModel litter = litterService.findLitterById(id);
+        litterService.deleteAnExistingLitter(id);
 
         return ResponseEntity.status(204).build();
     }

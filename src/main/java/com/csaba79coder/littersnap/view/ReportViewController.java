@@ -23,7 +23,7 @@ public class ReportViewController {
 
     @GetMapping
     public String getAllReports(Model model) {
-        List<ReportModel> reports = reportService.getAllReports();
+        List<ReportModel> reports = reportService.findAllReports();
 
         if (reports.isEmpty()) {
             return "error_page";
@@ -35,7 +35,7 @@ public class ReportViewController {
 
     @GetMapping("/{id}")
     public String getReportById(@PathVariable UUID id, Model model) {
-        ReportModel currentReport = reportService.getReportById(id);
+        ReportModel currentReport = reportService.findReportById(id);
 
         if (currentReport == null) {
             return "error_page";
@@ -47,7 +47,7 @@ public class ReportViewController {
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable UUID id, Model model) {
-        ReportModel currentReport = reportService.getReportById(id);
+        ReportModel currentReport = reportService.findReportById(id);
         if (currentReport == null) {
             return "error_page";
         } else {
