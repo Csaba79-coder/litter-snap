@@ -27,9 +27,9 @@ public class LitterViewController {
 
 
     @GetMapping
-    public String getAllLitters(Model model) {
+    public String renderAllLitters(Model model) {
         try {
-            List<LitterModel> litters = litterService.getAllLitters();
+            List<LitterModel> litters = litterService.findAllLitters();
             model.addAttribute("litters", litters);
             model.addAttribute("view", "litter_list");
             return "welcome"; // Replace with the actual view name for displaying the list of litters
@@ -40,9 +40,9 @@ public class LitterViewController {
     }
 
     @GetMapping("/{id}")
-    public String getLitterById(@PathVariable("id") UUID id, Model model) {
+    public String renderLitterById(@PathVariable("id") UUID id, Model model) {
         try {
-            LitterModel litter = litterService.getLitterById(id);
+            LitterModel litter = litterService.findLitterById(id);
             model.addAttribute("id", litter.getId());
             model.addAttribute("createdAt", litter.getCreatedAt());
             model.addAttribute("updatedAt", litter.getUpdatedAt());
@@ -95,7 +95,7 @@ public class LitterViewController {
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable UUID id, Model model) {
         try {
-            LitterCreateOrModifyModel litter = Mapper.mapModelToLitterCreateOrModifyModel(litterService.getLitterById(id));
+            LitterCreateOrModifyModel litter = Mapper.mapModelToLitterCreateOrModifyModel(litterService.findLitterById(id));
             model.addAttribute("id", litter.getId());
             model.addAttribute("firstline", litter.getAddress().getFirstLine());
             model.addAttribute("city", litter.getAddress().getCity());
@@ -112,9 +112,9 @@ public class LitterViewController {
     }
 
     @PostMapping("/edit/{id}")
-    public String updateLitter(@PathVariable UUID id, @ModelAttribute("report") LitterCreateOrModifyModel litterModel, Model model) {
+    public String modifyExistingLitter(@PathVariable UUID id, @ModelAttribute("report") LitterCreateOrModifyModel litterModel, Model model) {
         try {
-            litterService.updateExistingLitter(id, litterModel);
+            litterService.modifyAnExistingLitter(id, litterModel);
             return "redirect:/reports"; // Redirect to the URL for displaying all reports after successful update
         } catch (NoSuchElementException e) {
             model.addAttribute("errorMessage", e.getMessage());
@@ -124,17 +124,13 @@ public class LitterViewController {
 
 
     @GetMapping("/delete/{id}")
-    public String deleteLitter(@PathVariable UUID id, Model model) {
-
+    public String deleteAnExistingLitter(@PathVariable UUID id, Model model) {
         try {
-            litterService.deleteLitter(id);
+            litterService.deleteAnExistingLitter(id);
             return "redirect:/thy/litter"; // Redirect to the URL for displaying all reports after successful deletion
         } catch (NoSuchElementException e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "error_page"; // Redirect to the error page to display the error message
         }
-
     }
-
-
 }
