@@ -39,6 +39,7 @@ PASSWORD_VALIDATOR value as follows:
 
 ```^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,32}$```
 
+Password requirement: 8-32 chars, at least 1 uppercase, 1 lowercase, 1 number, 1 special char 
 
 # Created by:
 
