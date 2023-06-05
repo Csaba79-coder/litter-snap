@@ -14,45 +14,46 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/litters")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class LitterController {
 
+    // TODO: render all litters for the logged in user only!
+    // TODO: create findByUserId method in ReportRepository
+
     private final LitterService litterService;
 
-    @GetMapping
-    public List<LitterModel> getAllLitters() {
+    @GetMapping("/admin/litters")
+    public List<LitterModel> renderAllLitters() {
         return litterService.findAllLitters();
     }
 
-    @PostMapping
+    @PostMapping("/admin/litters")
     public ResponseEntity<LitterModel> addNewLitter(@RequestBody LitterCreateOrModifyModel litterModel,
                                                     @RequestBody Address address,
                                                     @RequestParam("file") MultipartFile file) {
         return ResponseEntity.status(201).body(litterService.addNewLitter(litterModel, address, file));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<LitterModel> getLitterById(@PathVariable("id") UUID id) {
+    @GetMapping("/admin/litters/{id}")
+    public ResponseEntity<LitterModel> renderLitterById(@PathVariable("id") UUID id) {
         LitterModel litter = litterService.findLitterById(id);
         if (litter != null) {
             return new ResponseEntity<>(litter, HttpStatus.OK);
+
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/admin/litters/modify/{id}")
     public ResponseEntity<LitterModel> updateExistingLitter(@PathVariable("id") UUID id,
                                                             @RequestBody LitterCreateOrModifyModel model) {
         return ResponseEntity.status(200).body(litterService.modifyAnExistingLitter(id, model));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/litters/delete/{id}")
     public ResponseEntity<Void> deleteExistingLitter(@PathVariable("id") UUID id) {
-        LitterModel litter = litterService.findLitterById(id);
         litterService.deleteAnExistingLitter(id);
-
         return ResponseEntity.status(204).build();
     }
-
 }

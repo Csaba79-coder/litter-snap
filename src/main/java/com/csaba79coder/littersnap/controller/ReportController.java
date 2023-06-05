@@ -9,26 +9,28 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/reports")
+@RequestMapping("/api/auth")
 public class ReportController {
 
+    // TODO: render all reports for the logged in user only!
+    // TODO: create findByUserId method in ReportRepository
     private final ReportService reportService;
 
     public ReportController(ReportService reportService) {
         this.reportService = reportService;
     }
 
-    @GetMapping
+    @GetMapping("/admin/reports")
     public List<ReportModel> renderAllReports() {
         return reportService.findAllReports();
     }
 
-    @PostMapping
+    @PostMapping("/admin/reports")
     public ResponseEntity<ReportModel> addNewReport(@RequestBody ReportModel model) {
         return ResponseEntity.status(201).body(reportService.addNewReport(model));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/admin/reports/{id}")
     public ResponseEntity<ReportModel> renderReportById(@PathVariable("id") UUID id) {
         ReportModel report = reportService.findReportById(id);
         if (report != null) {
@@ -37,16 +39,14 @@ public class ReportController {
         return ResponseEntity.notFound().build();  // Return 404 (Not Found) status
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ReportModel> updateAnExistingReport(@PathVariable("id") UUID id, @RequestBody ReportModel model) {
+    @PutMapping("/admin/reports/{id}")
+    public ResponseEntity<ReportModel> updateExistingReport(@PathVariable("id") UUID id, @RequestBody ReportModel model) {
         return ResponseEntity.status(200).body(reportService.modifyAnExistingReport(id, model));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAnExistingReport(@PathVariable("id") UUID id) {
-        ReportModel litter = reportService.findReportById(id);
+    @DeleteMapping("/admin/reports/{id}")
+    public ResponseEntity<Void> deleteExistingReport(@PathVariable("id") UUID id) {
         reportService.deleteExistingReport(id);
-
         return ResponseEntity.status(204).build();
     }
 }

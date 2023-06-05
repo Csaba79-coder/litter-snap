@@ -2,6 +2,8 @@
 
 # We use server port: 8081
 
+# Password must be min. 8 characters long, must contain at least one uppercase letter, one lowercase letter, one number and one special character!
+
 # Installation Guide
 
 ## Environment variables (setup as follows)
@@ -39,6 +41,7 @@ PASSWORD_VALIDATOR value as follows:
 
 ```^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,32}$```
 
+Password requirement: 8-32 chars, at least 1 uppercase, 1 lowercase, 1 number, 1 special char 
 
 # Created by:
 
