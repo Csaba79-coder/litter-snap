@@ -21,7 +21,6 @@
 - MySQL
 - Spring Security
 - Log4j2
-- Validator
 
 ## Frontend Dependencies
 

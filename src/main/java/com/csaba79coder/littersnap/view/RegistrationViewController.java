@@ -2,7 +2,6 @@ package com.csaba79coder.littersnap.view;
 
 import com.csaba79coder.littersnap.model.user.dto.UserRegistrationModel;
 import com.csaba79coder.littersnap.model.user.service.UserService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +25,7 @@ public class RegistrationViewController {
     }
 
     @PostMapping("/registration")
-    public String registerUser(@ModelAttribute("userRegistrationModel") @Valid UserRegistrationModel registrationModel,
+    public String registerUser(@ModelAttribute("userRegistrationModel") UserRegistrationModel registrationModel,
                                BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "registration";
