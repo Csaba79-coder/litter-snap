@@ -24,6 +24,46 @@ body {
     z-index: 999;
 }
 
+/*Image redendering size controll*/
+.image-container {
+    max-width: 350px; /* Set the maximum width for the image container */
+    margin: auto; /* Center the container horizontally */
+    cursor: pointer; /* Show the pointer cursor when hovering */
+}
+
+.image-container img {
+    width: 100%; /* Make the image fill the container */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s; /* Add a smooth transition effect */
+}
+
+.image-container img:hover {
+    transform: scale(1.2); /* Scale the image to 120% on hover */
+}
+
+/*NavBar style*/
+ .navbar {
+     background-color: #f8f9fa;
+     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+ }
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff;
+}
+
+/*Logo Style*/
 .logo-and-slogan-container {
     position: relative;
 }

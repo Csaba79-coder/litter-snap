@@ -54,4 +54,5 @@ public class LitterController {
 
         return ResponseEntity.status(204).build();
     }
+
 }
