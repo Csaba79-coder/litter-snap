@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -63,13 +64,13 @@ public class UserService {
         if (findUserByEmail(model.getEmail())) {
             errorMessage = "Email already in use: " + model.getEmail();
             log.error(errorMessage);
-            throw new IllegalArgumentException(errorMessage);
+            throw new InputMismatchException(errorMessage);
         }
 
         if (!Objects.equals(model.getPassword(), model.getPasswordConfirmation())) {
             errorMessage = "Password and confirmation do not match.";
             log.error(errorMessage);
-            throw new IllegalArgumentException(errorMessage);
+            throw new InputMismatchException(errorMessage);
         }
 
         return Mapper.mapUserEntityToModel(userRepository.save(Mapper.mapUserRegistrationModelToUserEntity(model)));
@@ -92,7 +93,7 @@ public class UserService {
             if (findUserByEmail(model.getEmail())) {
                 errorMessage = "Email already in use: " + model.getEmail();
                 log.error(errorMessage);
-                throw new IllegalArgumentException(errorMessage);
+                throw new InputMismatchException(errorMessage);
             }
 
             // Check if the new email is valid
@@ -112,7 +113,7 @@ public class UserService {
             if (!Objects.equals(model.getPassword(), model.getPasswordConfirmation())) {
                 errorMessage = "Password and confirmation do not match.";
                 log.error(errorMessage);
-                throw new IllegalArgumentException(errorMessage);
+                throw new InputMismatchException(errorMessage);
             }
 
             // Delete the current user

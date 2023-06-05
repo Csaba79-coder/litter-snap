@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -19,8 +19,6 @@ import java.util.stream.Collectors;
 public class ReportService  {
 
     private final ReportRepository reportRepository;
-
-
 
     public List<ReportModel> findAllReports() {
         return reportRepository.findAll()
@@ -37,42 +35,40 @@ public class ReportService  {
 
 
     public ReportModel findReportById(UUID id) {
-        Optional<Report> optionalReport = reportRepository.findReportById(id);
-        if (optionalReport.isPresent()) {
-            Report report = optionalReport.get();
-            return Mapper.mapReportEntityToModel(report);
-        }
-        //TODO
-        // If the report with the specified ID does not exist, you can throw an exception or return null
-        return null;
+        Report report = reportRepository.findReportById(id)
+                .orElseThrow(() -> {
+                    String message = "Report not found with id: " + id;
+                    log.error(message);
+                    throw new NoSuchElementException("Report not found with id: " + id);
+                });
+        return Mapper.mapReportEntityToModel(report);
     }
 
     public ReportModel modifyAnExistingReport(UUID id, ReportModel model) {
-        Optional<Report> optionalExistingReport = reportRepository.findById(id);
-        if (optionalExistingReport.isPresent()) {
-            Report existingReport = optionalExistingReport.get();
+        Report report = reportRepository.findReportById(id)
+                .orElseThrow(() -> {
+                    String message = "Report not found with id: " + id;
+                    log.error(message);
+                    throw new NoSuchElementException("Report not found with id: " + id);
+                });
 
-            // Update the properties of the existing report with the values from the model
-            existingReport.setLitter(model.getLitter());
+        // Update the properties of the existing report with the values from the model
+        report.setLitter(model.getLitter());
 
-            // Save the updated report in the repository
-            Report updatedReport = reportRepository.save(existingReport);
+        // Save the updated report in the repository
+        Report updatedReport = reportRepository.save(report);
 
-            // Map the updated report entity to a ReportModel and return it
-            return Mapper.mapReportEntityToModel(updatedReport);
-        }
-        //TODO
-        // If the report with the specified ID does not exist, you can throw an exception or return null
-        return null;
+        // Map the updated report entity to a ReportModel and return it
+        return Mapper.mapReportEntityToModel(updatedReport);
     }
 
     public void deleteExistingReport(UUID id) {
-        Optional<Report> optionalExistingReport = reportRepository.findById(id);
-        if (optionalExistingReport.isPresent()) {
-            reportRepository.deleteById(id);
-        } else {
-            //TODO
-            // If the report with the specified ID does not exist, you can throw an exception or return null
-        }
+        Report report = reportRepository.findReportById(id)
+                .orElseThrow(() -> {
+                    String message = "Report not found with id: " + id;
+                    log.error(message);
+                    throw new NoSuchElementException("Report not found with id: " + id);
+                });
+        reportRepository.deleteById(report.getId());
     }
 }

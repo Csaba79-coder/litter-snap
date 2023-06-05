@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/thy/reports")
+@RequestMapping("/thy/auth")
 public class ReportViewController {
 
     private final ReportService reportService;
@@ -21,8 +21,8 @@ public class ReportViewController {
 
 
 
-    @GetMapping
-    public String getAllReports(Model model) {
+    @GetMapping("/admin/reports")
+    public String renderAllReports(Model model) {
         List<ReportModel> reports = reportService.findAllReports();
 
         if (reports.isEmpty()) {
@@ -33,8 +33,8 @@ public class ReportViewController {
         }
     }
 
-    @GetMapping("/{id}")
-    public String getReportById(@PathVariable UUID id, Model model) {
+    @GetMapping("/admin/reports/{id}")
+    public String renderReportById(@PathVariable UUID id, Model model) {
         ReportModel currentReport = reportService.findReportById(id);
 
         if (currentReport == null) {
@@ -45,7 +45,7 @@ public class ReportViewController {
         }
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/admin/reports/edit/{id}")
     public String showEditForm(@PathVariable UUID id, Model model) {
         ReportModel currentReport = reportService.findReportById(id);
         if (currentReport == null) {
@@ -56,17 +56,15 @@ public class ReportViewController {
         }
     }
 
-    @PostMapping("/edit/{id}")
+    @PostMapping("/admin/reports/edit/{id}")
     public String updateReport(@PathVariable UUID id, @ModelAttribute("report") ReportModel report) {
         reportService.addNewReport(report);
         return "redirect:/reports"; // Redirect to the URL for displaying all reports after successful update
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/admin/reports/delete/{id}")
     public String deleteReport(@PathVariable UUID id) {
         reportService.deleteExistingReport(id);
         return "redirect:/reports"; // Redirect to the URL for displaying all reports after successful deletion
     }
 }
-
-

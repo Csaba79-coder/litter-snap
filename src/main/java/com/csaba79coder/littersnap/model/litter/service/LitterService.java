@@ -32,7 +32,6 @@ public class LitterService {
     public List<LitterModel> findAllLitters() {
         List<Litter> litters = litterRepository.findAll();
 
-
         if (litters.isEmpty()) {
             String message = "Litter list is empty";
             log.error(message);
@@ -111,13 +110,13 @@ public class LitterService {
     }
 
     public void deleteAnExistingLitter(UUID id) {
-        Optional<Litter> optionalExistingLitter = litterRepository.findById(id);
-        if (optionalExistingLitter.isPresent()) {
-            litterRepository.deleteById(id);
-        } else {
-            String message = String.format("Couldn't delete. Litter with id %s not found", id);
-            log.error(message);
-            throw new NoSuchElementException(message);
-        }
+        Litter litter = litterRepository.findById(id)
+                .orElseThrow(() -> {
+                    String message = "Litter not found with id: " + id;
+                    log.error(message);
+                    throw new IllegalArgumentException(message);
+                });
+        litterRepository.deleteById(litter.getId());
     }
 }
+
