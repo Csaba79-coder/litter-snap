@@ -19,8 +19,8 @@ public class ReportController {
     }
 
     @GetMapping
-    public List<ReportModel> getAllReports() {
-        return reportService.getAllReports();
+    public List<ReportModel> renderAllReports() {
+        return reportService.findAllReports();
     }
 
     @PostMapping
@@ -29,8 +29,8 @@ public class ReportController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ReportModel> getReportById(@PathVariable("id") UUID id) {
-        ReportModel report = reportService.getReportById(id);
+    public ResponseEntity<ReportModel> renderReportById(@PathVariable("id") UUID id) {
+        ReportModel report = reportService.findReportById(id);
         if (report != null) {
             return ResponseEntity.ok(report);  // Include the report in the response body with status code 200 (OK)
         }
@@ -38,13 +38,13 @@ public class ReportController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ReportModel> updateExistingReport(@PathVariable("id") UUID id, @RequestBody ReportModel model) {
-        return ResponseEntity.status(200).body(reportService.updateExistingReport(id, model));
+    public ResponseEntity<ReportModel> updateAnExistingReport(@PathVariable("id") UUID id, @RequestBody ReportModel model) {
+        return ResponseEntity.status(200).body(reportService.modifyAnExistingReport(id, model));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteExistingReport(@PathVariable("id") UUID id) {
-        ReportModel litter = reportService.getReportById(id);
+    public ResponseEntity<Void> deleteAnExistingReport(@PathVariable("id") UUID id) {
+        ReportModel litter = reportService.findReportById(id);
         reportService.deleteExistingReport(id);
 
         return ResponseEntity.status(204).build();

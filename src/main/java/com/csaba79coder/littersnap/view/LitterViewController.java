@@ -7,12 +7,7 @@ import com.csaba79coder.littersnap.model.litter.service.LitterService;
 import com.csaba79coder.littersnap.util.Mapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Base64;
@@ -32,9 +27,9 @@ public class LitterViewController {
 
 
     @GetMapping
-    public String getAllLitters(Model model) {
+    public String renderAllLitters(Model model) {
         try {
-            List<LitterModel> litters = litterService.getAllLitters();
+            List<LitterModel> litters = litterService.findAllLitters();
             model.addAttribute("litters", litters);
             model.addAttribute("view", "litter_list");
             return "welcome"; // Replace with the actual view name for displaying the list of litters
@@ -45,9 +40,9 @@ public class LitterViewController {
     }
 
     @GetMapping("/{id}")
-    public String getLitterById(@PathVariable("id") UUID id, Model model) {
+    public String renderLitterById(@PathVariable("id") UUID id, Model model) {
         try {
-            LitterModel litter = litterService.getLitterById(id);
+            LitterModel litter = litterService.findLitterById(id);
             model.addAttribute("id", litter.getId());
             model.addAttribute("createdAt", litter.getCreatedAt());
             model.addAttribute("updatedAt", litter.getUpdatedAt());
@@ -71,14 +66,15 @@ public class LitterViewController {
     }
 
     @GetMapping("/create")
-    public String showAddLitterForm(Model model) {
+    public String showAddLitterForm(Model model, @RequestParam(value = "city", required = false) String capturedCity) {
         try {
             LitterCreateOrModifyModel litterModel = new LitterCreateOrModifyModel();
-
             // Set any other necessary properties in the litterModel object
 
+            model.addAttribute("city", capturedCity);
             model.addAttribute("litter", litterModel);
-            return "litter_add_form";
+            model.addAttribute("view","litter_add_form");
+            return "welcome";
         } catch (NoSuchElementException e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "error_page"; // Redirect to the error page to display the error message
@@ -86,10 +82,7 @@ public class LitterViewController {
     }
 
     @PostMapping("/create")
-    public String addNewLitter(@ModelAttribute("litter") LitterCreateOrModifyModel litterModel,
-                               @ModelAttribute("address") Address address,
-                               @RequestParam("file") MultipartFile file,
-                               Model model) {
+    public String addNewLitter(@ModelAttribute("litter") LitterCreateOrModifyModel litterModel, @ModelAttribute("address") Address address, @RequestParam("file") MultipartFile file, Model model) {
         try {
             litterService.addNewLitter(litterModel, address, file);
             return "redirect:/thy/litter";
@@ -102,7 +95,7 @@ public class LitterViewController {
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable UUID id, Model model) {
         try {
-            LitterCreateOrModifyModel litter = Mapper.mapModelToLitterCreateOrModifyModel(litterService.getLitterById(id));
+            LitterCreateOrModifyModel litter = Mapper.mapModelToLitterCreateOrModifyModel(litterService.findLitterById(id));
             model.addAttribute("id", litter.getId());
             model.addAttribute("firstline", litter.getAddress().getFirstLine());
             model.addAttribute("city", litter.getAddress().getCity());
@@ -110,7 +103,7 @@ public class LitterViewController {
             model.addAttribute("postcode", litter.getAddress().getPostCode());
             model.addAttribute("description", litter.getDescription());
             model.addAttribute("image", litter.getImage());
-            model.addAttribute("view","litter_edit_form");
+            model.addAttribute("view", "litter_edit_form");
             return "welcome";
         } catch (NoSuchElementException e) {
             model.addAttribute("errorMessage", e.getMessage());
@@ -119,9 +112,9 @@ public class LitterViewController {
     }
 
     @PostMapping("/edit/{id}")
-    public String updateLitter(@PathVariable UUID id, @ModelAttribute("report") LitterCreateOrModifyModel litterModel, Model model) {
+    public String modifyExistingLitter(@PathVariable UUID id, @ModelAttribute("report") LitterCreateOrModifyModel litterModel, Model model) {
         try {
-            litterService.updateExistingLitter(id, litterModel);
+            litterService.modifyAnExistingLitter(id, litterModel);
             return "redirect:/reports"; // Redirect to the URL for displaying all reports after successful update
         } catch (NoSuchElementException e) {
             model.addAttribute("errorMessage", e.getMessage());
@@ -131,18 +124,13 @@ public class LitterViewController {
 
 
     @GetMapping("/delete/{id}")
-    public String deleteLitter(@PathVariable UUID id,Model model) {
-
+    public String deleteAnExistingLitter(@PathVariable UUID id, Model model) {
         try {
-            litterService.deleteLitter(id);
+            litterService.deleteAnExistingLitter(id);
             return "redirect:/thy/litter"; // Redirect to the URL for displaying all reports after successful deletion
         } catch (NoSuchElementException e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "error_page"; // Redirect to the error page to display the error message
         }
-
     }
-
-
-
 }
