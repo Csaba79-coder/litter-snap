@@ -14,28 +14,33 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/users")
+@RequestMapping("/api/auth")
 public class UserController {
+
+    // TODO: render user details for the logged in user only!
+    // TODO: create findByUserId method in ReportRepository
 
     private final UserService userService;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/admin/users",
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<UserModel>> renderAllUsers() {
         return ResponseEntity.status(200).body(userService.findAllUsers());
     }
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/admin/users",
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserModel> addNewUser(@RequestBody UserRegistrationModel model) {
         return ResponseEntity.status(201).body(userService.addNewUser(model));
     }
 
-    @PutMapping(value = "/{id}",
+    @PutMapping(value = "/admin/users/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserModel> modifyExistingUser(@PathVariable UUID id, @RequestBody UserModifyModel model) {
         return ResponseEntity.status(200).body(userService.modifyAnExistingUser(id, model));
     }
 
-    @DeleteMapping(value = "/{id}",
+    @DeleteMapping(value = "/admin/users/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> deleteAnExistingUser(@PathVariable UUID id) {
         userService.deleteUser(id);

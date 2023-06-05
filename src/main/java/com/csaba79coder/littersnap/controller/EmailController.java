@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/auth")
 public class EmailController {
 
     private final LitterSnapEmailSenderServiceImpl litterSnapEmailSenderService;
 
-    @PostMapping(value = "/email/test",
+    @PostMapping(value = "/admin/email/test",
             produces = "application/json")
     public ResponseEntity sendTestEmail(@RequestBody EmailRequest emailRequest) {
         boolean emailSent = litterSnapEmailSenderService.sendEmailHtml(emailRequest);

@@ -13,13 +13,13 @@ import java.util.NoSuchElementException;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/thy/users")
+@RequestMapping("/thy/auth")
 public class UserViewController {
 
     private final UserService userService;
 
-    @GetMapping
-    public String getAllUsers(Model model) {
+    @GetMapping("/admin/users")
+    public String renderAllUsers(Model model) {
         try {
             List<UserModel> users = userService.findAllUsers();
             model.addAttribute("users", users);

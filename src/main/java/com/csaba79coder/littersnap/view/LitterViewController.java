@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/thy/litter")
+@RequestMapping("/thy/auth")
 public class LitterViewController {
 
     private final LitterService litterService;
@@ -26,7 +26,7 @@ public class LitterViewController {
     }
 
 
-    @GetMapping
+    @GetMapping("/admin/litters")
     public String renderAllLitters(Model model) {
         try {
             List<LitterModel> litters = litterService.findAllLitters();
@@ -39,7 +39,7 @@ public class LitterViewController {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/admin/litters/{id}")
     public String renderLitterById(@PathVariable("id") UUID id, Model model) {
         try {
             LitterModel litter = litterService.findLitterById(id);
@@ -65,7 +65,7 @@ public class LitterViewController {
         }
     }
 
-    @GetMapping("/create")
+    @GetMapping("/admin/litters/create")
     public String showAddLitterForm(Model model, @RequestParam(value = "city", required = false) String capturedCity) {
         try {
             LitterCreateOrModifyModel litterModel = new LitterCreateOrModifyModel();
@@ -81,7 +81,7 @@ public class LitterViewController {
         }
     }
 
-    @PostMapping("/create")
+    @PostMapping("/admin/litters/create")
     public String addNewLitter(@ModelAttribute("litter") LitterCreateOrModifyModel litterModel, @ModelAttribute("address") Address address, @RequestParam("file") MultipartFile file, Model model) {
         try {
             litterService.addNewLitter(litterModel, address, file);
@@ -92,7 +92,7 @@ public class LitterViewController {
         }
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/admin/litters/edit/{id}")
     public String showEditForm(@PathVariable UUID id, Model model) {
         try {
             LitterCreateOrModifyModel litter = Mapper.mapModelToLitterCreateOrModifyModel(litterService.findLitterById(id));
@@ -111,7 +111,7 @@ public class LitterViewController {
         }
     }
 
-    @PostMapping("/edit/{id}")
+    @PostMapping("/admin/litters/edit/{id}")
     public String modifyExistingLitter(@PathVariable UUID id, @ModelAttribute("report") LitterCreateOrModifyModel litterModel, Model model) {
         try {
             litterService.modifyAnExistingLitter(id, litterModel);
@@ -123,7 +123,7 @@ public class LitterViewController {
     }
 
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/admin/litters/delete/{id}")
     public String deleteAnExistingLitter(@PathVariable UUID id, Model model) {
         try {
             litterService.deleteAnExistingLitter(id);
