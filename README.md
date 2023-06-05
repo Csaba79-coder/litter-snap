@@ -1,6 +1,6 @@
 ![img.png](src/main/resources/static/readme/banner-app.png)
 
-# We use server port: 8081 & our Website is responsive!
+# We use server port: 8081 & our Website is full responsive!
 
 ## Hosting plan
 
@@ -59,6 +59,7 @@
 
 ## Future plan
 
+- Implement login form and Spring Security
 - Create separate table for roles (and set a list of roles to the users)
 - We plan to use our existing domain: csaba79coder.com
 - We plan to make registration with social media

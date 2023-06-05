@@ -2,6 +2,8 @@
 
 # We use server port: 8081
 
+# Password must be min. 8 characters long, must contain at least one uppercase letter, one lowercase letter, one number and one special character!
+
 # Installation Guide
 
 ## Environment variables (setup as follows)
