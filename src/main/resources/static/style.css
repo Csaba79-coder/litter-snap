@@ -24,6 +24,10 @@ body {
     z-index: 999;
 }
 
+/*SignUp form*/
+.signup-form-container{
+    max-width: 600px;
+}
 /*Image redendering size controll*/
 .image-container {
     max-width: 350px; /* Set the maximum width for the image container */
