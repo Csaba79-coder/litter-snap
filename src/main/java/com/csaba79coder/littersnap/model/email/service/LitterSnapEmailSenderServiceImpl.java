@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * This class contains the litter snap email sender service implementation.
  * Also include logs errors and exceptions.
  */
-@Service
+@Service("email")
 @RequiredArgsConstructor
 @Slf4j
 public class LitterSnapEmailSenderServiceImpl implements LitterSnapEmailSenderService {
