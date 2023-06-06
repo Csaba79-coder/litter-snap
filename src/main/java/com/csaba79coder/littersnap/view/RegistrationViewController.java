@@ -33,8 +33,10 @@ public class RegistrationViewController {
      */
     @GetMapping("/registration")
     public String showRegistrationForm(Model model) {
-        model.addAttribute("userRegistrationModel", new UserRegistrationModel());
-        return "registration";
+        UserRegistrationModel tempModel = new UserRegistrationModel();
+        model.addAttribute("userRegistrationModel", tempModel );
+        model.addAttribute("view","signUp_form");
+        return "index";
     }
 
     /**
@@ -46,11 +48,14 @@ public class RegistrationViewController {
     @PostMapping("/registration")
     public String registerUser(@ModelAttribute("userRegistrationModel") UserRegistrationModel registrationModel,
                                BindingResult bindingResult) {
+
         if (bindingResult.hasErrors()) {
-            return "registration";
+            return "signUp_form";
         }
         // Create a User object from the registration model and save it using the UserService
         userService.addNewUser(registrationModel);
         return "redirect:/index"; // Redirect to the index page after successful registration
     }
 }
+
+
