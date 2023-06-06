@@ -25,6 +25,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
  */
 class MapperTest {
 
+    private final static String TEST_STRING = "test";
+
     /**
      * Test method for {@link Mapper#mapUserRegistrationModelToUserEntity(UserRegistrationModel)}.
      */
@@ -129,7 +131,7 @@ class MapperTest {
     @Test
     @DisplayName("mapLitterLitterEntityToModel")
     public void testMapLitterEntityToModel() {
-        Litter litterEntity = new Litter();
+        Litter litterEntity = createSampleLitter();
         // Set up the litter entity with necessary properties
 
         LitterModel litterModel = Mapper.mapLitterEntityToModel(litterEntity);
@@ -187,5 +189,27 @@ class MapperTest {
         assertEquals(addressEntity.getCity(), addressModel.getCity());
         assertEquals(addressEntity.getPostCode(), addressModel.getPostCode());
         // Add more assertions as needed
+    }
+
+    private byte[] getByteCode() {
+        return MapperTest.TEST_STRING.getBytes();
+    }
+
+    private Litter createSampleLitter() {
+        Litter litter = new Litter();
+        litter.setDescription("Sample litter description");
+        litter.setImage(getByteCode());
+        litter.setAddress(createSampleAddress());
+        return litter;
+    }
+
+    // Helper method to create a sample Address object
+    private Address createSampleAddress() {
+        Address address = new Address();
+        address.setCity("Sample City");
+        address.setCountry("Sample Country");
+        address.setPostCode("12345");
+        address.setFirstLine("Sample First Line");
+        return address;
     }
 }

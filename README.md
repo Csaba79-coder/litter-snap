@@ -63,6 +63,7 @@
 
 ## Future plan
 
+- Improve test coverage (unit tests, integration tests, end-to-end tests)
 - Implement login form and Spring Security
 - Create separate table for roles (and set a list of roles to the users)
 - After roles are implemented, we plan to make a separate REST API & Thymeleaf for the user (now only admin implemented)

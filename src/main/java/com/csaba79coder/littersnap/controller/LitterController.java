@@ -27,16 +27,29 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class LitterController {
 
-    // TODO: render all litters for the logged in user only!
-    // TODO: create findByUserId method in ReportRepository
-
+    /**
+     * The LitterService.
+     * TODO: render all litters for the logged-in user only!
+     * TODO: create findByUserId method in ReportRepository
+     */
     private final LitterService litterService;
 
+    /**
+     * This method is used to render all litters.
+     * @return the list of litters
+     */
     @GetMapping("/admin/litters")
     public List<LitterModel> renderAllLitters() {
         return litterService.findAllLitters();
     }
 
+    /**
+     * This method is used to add a new litter.
+     * @param litterModel the litter model
+     * @param address the address
+     * @param file the file
+     * @return the response entity
+     */
     @PostMapping(value = "/admin/litters",
         consumes = "multipart/form-data",
             produces = "application/json")
@@ -46,24 +59,39 @@ public class LitterController {
         return ResponseEntity.status(201).body(litterService.addNewLitter(litterModel, address, file));
     }
 
+    /**
+     * This method is used to render a litter by id.
+     * @param id the id
+     * @return the response entity
+     */
     @GetMapping("/admin/litters/{id}")
     public ResponseEntity<LitterModel> renderLitterById(@PathVariable("id") UUID id) {
         LitterModel litter = litterService.findLitterById(id);
         if (litter != null) {
             return new ResponseEntity<>(litter, HttpStatus.OK);
-
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * This method is used to update a litter by id.
+     * @param id the id
+     * @param model the model
+     * @return the response entity
+     */
     @PutMapping(value = "/admin/litters/modify/{id}",
-            consumes = "multipart/form-data",
+            consumes = "application/json",
             produces = "application/json")
     public ResponseEntity<LitterModel> updateExistingLitter(@PathVariable("id") UUID id,
                                                             @RequestBody LitterCreateOrModifyModel model) {
         return ResponseEntity.status(200).body(litterService.modifyAnExistingLitter(id, model));
     }
 
+    /**
+     * This method is used to delete a litter by id.
+     * @param id the id
+     * @return the response entity
+     */
     @DeleteMapping("/admin/litters/delete/{id}")
     public ResponseEntity<Void> deleteExistingLitter(@PathVariable("id") UUID id) {
         litterService.deleteAnExistingLitter(id);

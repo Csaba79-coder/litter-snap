@@ -70,6 +70,8 @@ public class LitterService {
      * @param file
      * @return the litter model
      * @throws NoSuchElementException if the address is not found
+     * if address is already exists (check all fields mathching) then application set the existing address
+     * it address is not exists in system, then application save the new address and set it to the litter
      */
     public LitterModel addNewLitter(LitterCreateOrModifyModel litterModel, Address address, MultipartFile file) {
         Optional<Address> addressOptional = addressRepository.findAddressByCityContainingIgnoreCaseAndCountryContainingIgnoreCaseAndPostCodeAndFirstLineContainsIgnoreCase(
@@ -120,6 +122,8 @@ public class LitterService {
      * @param model
      * @return LitterModel
      * throws NoSuchElementException if the litter is not found
+     * if address is already exists (check all fields mathching) then application set the existing address
+     * it address is not exists in system, then application save the new address and set it to the litter
      */
     public LitterModel modifyAnExistingLitter(UUID id, LitterCreateOrModifyModel model) {
         Optional<Litter> optionalExistingLitter = litterRepository.findById(id);

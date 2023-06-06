@@ -5,6 +5,7 @@ import com.csaba79coder.littersnap.model.litter.dto.LitterCreateOrModifyModel;
 import com.csaba79coder.littersnap.model.litter.dto.LitterModel;
 import com.csaba79coder.littersnap.model.litter.service.LitterService;
 import com.csaba79coder.littersnap.util.Mapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,17 +16,28 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
 
+/**
+ * This class contains the litter view controller.
+ * Also include logs errors and exceptions.
+ */
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/thy/auth")
 public class LitterViewController {
 
+    /**
+     * Dependency injection fields.
+     * <p>
+     *     litterService: the litter service
+     * </p>
+     */
     private final LitterService litterService;
 
-    public LitterViewController(LitterService litterService) {
-        this.litterService = litterService;
-    }
-
-
+    /**
+     * This method renders the litter list.
+     * @param model the model
+     * @return the view name
+     */
     @GetMapping("/admin/litters")
     public String renderAllLitters(Model model) {
         try {
@@ -39,6 +51,12 @@ public class LitterViewController {
         }
     }
 
+    /**
+     * This method renders the litter details.
+     * @param id the litter id
+     * @param model the model
+     * @return the view name
+     */
     @GetMapping("/admin/litters/{id}")
     public String renderLitterById(@PathVariable("id") UUID id, Model model) {
         try {
@@ -65,6 +83,11 @@ public class LitterViewController {
         }
     }
 
+    /**
+     * This method creates a litter
+     * @param capturedCity and add button renders a form
+     * @return the view name
+     */
     @GetMapping("/admin/litters/create")
     public String showAddLitterForm(Model model, @RequestParam(value = "city", required = false) String capturedCity) {
         try {
@@ -81,6 +104,15 @@ public class LitterViewController {
         }
     }
 
+    /**
+     * This method creates a litter
+     * by the get method with the captured city parameter you can set the litterModel fields
+     * @param  litterModel
+     * @param  address
+     * @param  file
+     * @param  model
+     * @return the view name
+     */
     @PostMapping("/admin/litters/create")
     public String addNewLitter(@ModelAttribute("litter") LitterCreateOrModifyModel litterModel, @ModelAttribute("address") Address address, @RequestParam("file") MultipartFile file, Model model) {
         try {
@@ -92,6 +124,12 @@ public class LitterViewController {
         }
     }
 
+    /**
+     * This method renders the litter edit form.
+     * @param id the litter id
+     * @param model the model
+     * @return the view name
+     */
     @GetMapping("/admin/litters/edit/{id}")
     public String showEditForm(@PathVariable UUID id, Model model) {
         try {
@@ -111,6 +149,13 @@ public class LitterViewController {
         }
     }
 
+    /**
+     * This method updates an existing litter.
+     * @param id the litter id
+     * @param litterModel the litter model
+     * @param model the model
+     * @return the view name
+     */
     @PostMapping("/admin/litters/edit/{id}")
     public String modifyExistingLitter(@PathVariable UUID id, @ModelAttribute("report") LitterCreateOrModifyModel litterModel, Model model) {
         try {
@@ -122,7 +167,12 @@ public class LitterViewController {
         }
     }
 
-
+    /**
+     * This method deletes an existing litter.
+     * @param id the litter id
+     * @param model the model
+     * @return the view name
+     */
     @GetMapping("/admin/litters/delete/{id}")
     public String deleteAnExistingLitter(@PathVariable UUID id, Model model) {
         try {
