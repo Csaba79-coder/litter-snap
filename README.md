@@ -64,6 +64,7 @@
 
 - Implement login form and Spring Security
 - Create separate table for roles (and set a list of roles to the users)
+- After roles are implemented, we plan to make a separate REST API & Thymeleaf for the user (now only admin implemented)
 - We plan to use our existing domain: csaba79coder.com
 - We plan to make registration with social media
 - We also plan to make a mobile app (and using google map's API there for the localization of the users)
