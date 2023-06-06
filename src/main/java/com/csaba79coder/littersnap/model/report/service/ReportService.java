@@ -13,13 +13,28 @@ import java.util.NoSuchElementException;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+/**
+ * This class contains the report service.
+ * Also include logs errors and exceptions.
+ */
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class ReportService  {
 
+    /**
+     * Dependency injection fields.
+     * <p>
+     *     reportRepository: the report repository
+     * </p>
+     */
     private final ReportRepository reportRepository;
 
+    /**
+     * This method finds all reports.
+     * @return the list of reports (model)
+     * @throws NoSuchElementException if the report list is empty
+     */
     public List<ReportModel> findAllReports() {
         return reportRepository.findAll()
                 .stream()
@@ -33,7 +48,12 @@ public class ReportService  {
         return Mapper.mapReportEntityToModel(savedReportEntity);
     }
 
-
+    /**
+     * This method finds a report by id.
+     * @param id the report id
+     * @return the report model
+     * @throws NoSuchElementException if the report is not found
+     */
     public ReportModel findReportById(UUID id) {
         Report report = reportRepository.findReportById(id)
                 .orElseThrow(() -> {
@@ -44,6 +64,13 @@ public class ReportService  {
         return Mapper.mapReportEntityToModel(report);
     }
 
+    /**
+     * This method modifies an existing report.
+     * @param id the report id
+     * @param model the report model
+     * @return the modified report model
+     * @throws NoSuchElementException if the report is not found
+     */
     public ReportModel modifyAnExistingReport(UUID id, ReportModel model) {
         Report report = reportRepository.findReportById(id)
                 .orElseThrow(() -> {
@@ -62,6 +89,11 @@ public class ReportService  {
         return Mapper.mapReportEntityToModel(updatedReport);
     }
 
+    /**
+     * This method deletes an existing report.
+     * @param id the report id
+     * @throws NoSuchElementException if the report is not found
+     */
     public void deleteExistingReport(UUID id) {
         Report report = reportRepository.findReportById(id)
                 .orElseThrow(() -> {

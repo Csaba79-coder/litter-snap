@@ -12,15 +12,31 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+/**
+ * This is a temporary solution to provide a security configuration for the application.
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
 
+    /**
+     * This is a temporary solution to provide a password encoder for the application.
+     * @return
+     * @see <a href="https://docs.spring.io/spring-security/site/docs/current/reference/html5/#servlet-hello-bcrypt">Spring Security documentation</a>
+     * @see <a href="https://www.baeldung.com/spring-security-registration-password-encoding-bcrypt">Spring Security Registration Password Encoding with Bcrypt</a>
+     * @see <a href="https://www.baeldung.com/spring-security-registration-i-password-encoding-bcrypt">Spring Security Registration Password Encoding with Bcrypt</a>
+     */
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * This is a temporary solution to provide a security filter chain for the application.
+     * @param http
+     * @return
+     * @throws Exception
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -36,25 +52,13 @@ public class SecurityConfiguration {
                 .and()
                 .csrf().disable();  // Disable CSRF protection
         return http.build();
-
-        /*
-        this disables all authentication and authorization for the moment!
-        http
-            .authorizeRequests()
-                .anyRequest().permitAll()  // Allow access to all endpoints
-            .and()
-                .formLogin()
-                    .disable()  // Disable form-based login
-            .and()
-                .logout()
-                    .disable()  // Disable logout functionality
-            .and()
-                .csrf()
-                    .disable();  // Disable CSRF protection
-    return http.build();
-         */
     }
 
+    /**
+     * This is a temporary solution to provide a user for the application.
+     * This is not a good practice, but it is enough for the moment.
+     * <p>
+     */
     @Bean
     public UserDetailsService users() {
         UserDetails user = User.builder()

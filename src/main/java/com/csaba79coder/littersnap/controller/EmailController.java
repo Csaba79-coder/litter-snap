@@ -10,13 +10,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * EmailController
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
 public class EmailController {
 
+    /**
+     * The litterSnapEmailSenderService field.
+     * <p>
+     *     This field is used to send emails.
+     * </p>
+     */
     private final LitterSnapEmailSenderServiceImpl litterSnapEmailSenderService;
 
+    /**
+     * This method is used to send a test email.
+     * @param emailRequest the email request
+     * @return the response entity
+     */
     @PostMapping(value = "/admin/email/test",
             produces = "application/json")
     public ResponseEntity sendTestEmail(@RequestBody EmailRequest emailRequest) {

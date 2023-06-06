@@ -6,6 +6,10 @@
 
 ### We plan to use our existing domain: csaba79coder.com
 
+## Basic setup
+
+- See manual
+
 ## Backend Dependencies
 
 - Java Development Kit - JDK 17
@@ -21,7 +25,6 @@
 - MySQL
 - Spring Security
 - Log4j2
-- Validator
 
 ## Frontend Dependencies
 
@@ -36,6 +39,7 @@
 - JUnit 5
 - Mockito
 - JUnit Jupiter
+- H2 Database (in memory database)
 - Spring Boot Test
 - Spring Boot Starter Test
 - Spring Boot Test Autoconfigure
@@ -59,11 +63,19 @@
 
 ## Future plan
 
+- Improve test coverage (unit tests, integration tests, end-to-end tests)
 - Implement login form and Spring Security
 - Create separate table for roles (and set a list of roles to the users)
+- After roles are implemented, we plan to make a separate REST API & Thymeleaf for the user (now only admin implemented)
 - We plan to use our existing domain: csaba79coder.com
 - We plan to make registration with social media
 - We also plan to make a mobile app (and using google map's API there for the localization of the users)
+- Creating javadoc for the project
+
+## Collaborations
+
+- GitHub
+- Postman (sharing workspace)
 
 # Created by:
 

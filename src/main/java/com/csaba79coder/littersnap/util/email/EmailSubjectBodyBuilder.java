@@ -1,7 +1,16 @@
 package com.csaba79coder.littersnap.util.email;
 
+/**
+ * This class contains methods for building the subject and body of an email.
+ */
 public class EmailSubjectBodyBuilder {
 
+    /**
+     * Builds the subject of an email.
+     *
+     * @param className the name of the class that calls the method
+     * @return the subject of the email
+     */
     public static String buildEmail(String url, String className, String firstName) {
         return switch (className) {
             case "RegistrationController" -> "Dear " + firstName + "!<br><br>" +
@@ -41,6 +50,12 @@ public class EmailSubjectBodyBuilder {
         };
     }
 
+    /**
+     * Builds the subject of an email.
+     *
+     * @param className the name of the class that calls the method
+     * @return the subject of the email
+     */
     public static String createEmailSubject(String className) {
         return switch (className) {
             case "RegistrationController" ->
@@ -50,5 +65,11 @@ public class EmailSubjectBodyBuilder {
                     "LitterSnap - Please create your new password to complete your manual registration";
             default -> null;
         };
+    }
+
+    /**
+     * private constructor to prevent instantiation
+     */
+    private EmailSubjectBodyBuilder() {
     }
 }

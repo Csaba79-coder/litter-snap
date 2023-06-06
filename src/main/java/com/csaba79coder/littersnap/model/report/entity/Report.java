@@ -8,7 +8,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
+/**
+ * This class contains the report entity.
+ */
 @Entity
 @Embeddable
 @Table(name = "litter_report")
@@ -18,6 +20,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Report extends Auditable {
 
+    /**
+     * Relation with Litter entity
+     */
     @ManyToOne
     @JoinColumn(name="litter_id", nullable=false)
     private Litter litter;

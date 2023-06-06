@@ -20,15 +20,30 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+/**
+ * This class contains the litter service.
+ * Also include logs errors and exceptions.
+ */
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class LitterService {
 
+    /**
+     * Dependency injection fields.
+     * <p>
+     *     litterRepository: the litter repository
+     *     addressRepository: the address repository
+     * </p>
+     */
     private final LitterRepository litterRepository;
-
     private final AddressRepository addressRepository;
 
+    /**
+     * This method finds all litters.
+     * @return the litter model
+     * @throws NoSuchElementException if the litter list is empty
+     */
     public List<LitterModel> findAllLitters() {
         List<Litter> litters = litterRepository.findAll();
 
@@ -48,6 +63,16 @@ public class LitterService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Adding a new litter.
+     * @param litterModel
+     * @param address
+     * @param file
+     * @return the litter model
+     * @throws NoSuchElementException if the address is not found
+     * if address is already exists (check all fields mathching) then application set the existing address
+     * it address is not exists in system, then application save the new address and set it to the litter
+     */
     public LitterModel addNewLitter(LitterCreateOrModifyModel litterModel, Address address, MultipartFile file) {
         Optional<Address> addressOptional = addressRepository.findAddressByCityContainingIgnoreCaseAndCountryContainingIgnoreCaseAndPostCodeAndFirstLineContainsIgnoreCase(
                 address.getCity(), address.getCountry(), address.getPostCode(), address.getFirstLine());
@@ -70,6 +95,12 @@ public class LitterService {
         return Mapper.mapLitterEntityToModel(savedLitterEntity);
     }
 
+    /**
+     * This method finds a litter by id.
+     * @param id the litter id
+     * @return the litter model
+     * @throws NoSuchElementException if the litter is not found
+     */
     public LitterModel findLitterById(UUID id) {
         Optional<Litter> litterOptional = litterRepository.findById(id);
         if (litterOptional.isPresent()) {
@@ -85,6 +116,15 @@ public class LitterService {
         }
     }
 
+    /**
+     * This method update a litter by id.
+     * @param id
+     * @param model
+     * @return LitterModel
+     * throws NoSuchElementException if the litter is not found
+     * if address is already exists (check all fields mathching) then application set the existing address
+     * it address is not exists in system, then application save the new address and set it to the litter
+     */
     public LitterModel modifyAnExistingLitter(UUID id, LitterCreateOrModifyModel model) {
         Optional<Litter> optionalExistingLitter = litterRepository.findById(id);
         if (optionalExistingLitter.isPresent()) {
@@ -109,6 +149,12 @@ public class LitterService {
 
     }
 
+    /**
+     * This method deletes a litter by id.
+     * @param id
+     * @return empty body (only status code)
+     * @throws NoSuchElementException if the litter is not found
+     */
     public void deleteAnExistingLitter(UUID id) {
         Litter litter = litterRepository.findById(id)
                 .orElseThrow(() -> {

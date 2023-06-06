@@ -30,10 +30,6 @@ public class Mapper {
         return modelMapper.map(user, UserModel.class);
     }
 
-    // private constructor to prevent instantiation
-    private Mapper() {
-    }
-
     public static ReportModel mapReportEntityToModel(Report entity) {
         return modelMapper.map(entity, ReportModel.class);
     }
@@ -66,5 +62,11 @@ public class Mapper {
 
     public static AddressModel mapAddressEntityToModel(Address entity) {
         return modelMapper.map(entity, AddressModel.class);
+    }
+
+    /**
+     * private constructor to prevent instantiation
+     */
+    private Mapper() {
     }
 }
