@@ -39,6 +39,7 @@
 - JUnit 5
 - Mockito
 - JUnit Jupiter
+- H2 Database (in memory database)
 - Spring Boot Test
 - Spring Boot Starter Test
 - Spring Boot Test Autoconfigure
