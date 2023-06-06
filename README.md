@@ -70,6 +70,7 @@
 - We plan to use our existing domain: csaba79coder.com
 - We plan to make registration with social media
 - We also plan to make a mobile app (and using google map's API there for the localization of the users)
+- Creating javadoc for the project
 
 ## Collaborations
 
