@@ -28,15 +28,27 @@
                     data-bs-target="#signInModal">
                 SignIn
             </button>
-            <button class="btn btn-warning btn-sm btn-block m-1" data-bs-toggle="modal"
-                    data-bs-target="#signUpModal">
-                SignUp
-            </button>
+            <a th:href="@{/thy/security/registration}" class="btn btn-warning btn-sm btn-block m-1" >SignUp</a>
         </div>
     </div>
 
-    <div th:replace="~{signIn_form}"></div>
-    <div th:replace="~{signUp_form}"></div>
+        <div th:replace="~{signIn_form}"></div>
+    <!-- Modal -->
+    <!-- Container for dynamic content -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <!-- Dynamic content placeholder -->
+                <div th:if="~{${view}}" class="row m-4">
+                    <div class="col">
+                        <!-- Dynamic Content Placeholder -->
+                        <div th:insert="~{${view}}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!--    Middle Part -->
     <div class="row justify-content-center align-items-center min-vh-100">
