@@ -57,7 +57,9 @@ public class ImageUtil {
         return outputStream.toByteArray();
     }
 
-    // as all the methods are static, I don't need to instantiate this class! to achieve this, I need to make the constructor private
+    /**
+     * private constructor to prevent instantiation
+     */
     private ImageUtil() {
 
     }

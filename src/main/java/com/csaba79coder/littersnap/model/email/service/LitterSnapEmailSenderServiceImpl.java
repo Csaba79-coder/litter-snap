@@ -9,13 +9,29 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+/**
+ * This class contains the litter snap email sender service implementation.
+ * Also include logs errors and exceptions.
+ */
 @Service("email")
 @RequiredArgsConstructor
 @Slf4j
 public class LitterSnapEmailSenderServiceImpl implements LitterSnapEmailSenderService {
 
+    /**
+     * The litter snap email sender service fields.
+     * <p>
+     *     mailSender: the mail sender
+     * </p>
+     */
     private final JavaMailSender mailSender;
 
+    /**
+     * This method sends an email.
+     *
+     * @param emailRequest the email request
+     * @return true if the email was sent, false otherwise
+     */
     @Override
     public boolean sendEmailHtml(EmailRequest emailRequest) {
 

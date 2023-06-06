@@ -1,0 +1,448 @@
+{
+	"info": {
+		"_postman_id": "79b7b733-8af9-4577-8113-9e9502810153",
+		"name": "litter-snap",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18091890",
+		"_collection_link": "https://crimson-firefly-974571.postman.co/workspace/My-Workspace~7e2291dc-a68f-4c99-8e2b-6a4ed4564dfd/collection/18091890-79b7b733-8af9-4577-8113-9e9502810153?action=share&creator=18091890&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "TestEmail",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "llpjrdsbulhtsxfr",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "info.littersnap@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "username",
+						"value": "info.littersnap@gmail.com",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "llpjrdsbulhtsxfr",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"emailTo\": \"csabavadasz79@gmail.com\",\r\n  \"subject\": \"Test Subject\",\r\n  \"body\": \"Test Body\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/admin/email/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"admin",
+						"email",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Render All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/auth/admin/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Render All Litters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/auth/admin/litters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"admin",
+						"litters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Render Litter By Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "description",
+							"value": "Test from postman",
+							"type": "text"
+						},
+						{
+							"key": "firstLine",
+							"value": "Rózsa utca 40/A",
+							"type": "text"
+						},
+						{
+							"key": "postCode",
+							"value": "1077",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Budapest",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "Hungary",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Computer/Desktop/LitterSnap/VasileKevinClientPics/LitterSnapTwins.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/admin/litters/06ca48b1-bc33-4237-a42c-690c69416506",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"admin",
+						"litters",
+						"06ca48b1-bc33-4237-a42c-690c69416506"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Render All Reports",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "description",
+							"value": "Test from postman",
+							"type": "text"
+						},
+						{
+							"key": "firstLine",
+							"value": "Rózsa utca 40/A",
+							"type": "text"
+						},
+						{
+							"key": "postCode",
+							"value": "1077",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Budapest",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "Hungary",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Computer/Desktop/LitterSnap/VasileKevinClientPics/LitterSnapTwins.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/admin/reports",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"admin",
+						"reports"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add new litter with photo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "description",
+							"value": "Test from postman",
+							"type": "text"
+						},
+						{
+							"key": "firstLine",
+							"value": "Rózsa utca 40/A",
+							"type": "text"
+						},
+						{
+							"key": "postCode",
+							"value": "1077",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Budapest",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "Hungary",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Computer/Desktop/LitterSnap/VasileKevinClientPics/LitterSnapTwins.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/admin/litters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"admin",
+						"litters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"eugene@gmail.com\",\r\n    \"firstName\": \"Eugene\",\r\n    \"password\": \"Almafa1234?\",\r\n    \"passwordConfirmation\": \"Almafa1234?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/admin/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Vasile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"verejanvasile@gmail.com\",\r\n    \"firstName\": \"Vasile\",\r\n    \"password\": \"Almafa1234?\",\r\n    \"passwordConfirmation\": \"Almafa1234?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/admin/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Kevin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"kevinzefi1999@gmail.com\",\r\n    \"firstName\": \"Kevin\",\r\n    \"password\": \"Almafa1234?\",\r\n    \"passwordConfirmation\": \"Almafa1234?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/admin/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify Existing User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"kevinkevin@gmail.com\",\r\n    \"firstName\": \"Csaba\",\r\n    \"password\": \"Almafa1234?\",\r\n    \"passwordConfirmation\": \"Almafa1234?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/admin/users/fd4fb0b7-933e-4765-9856-cac7410701fe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"admin",
+						"users",
+						"fd4fb0b7-933e-4765-9856-cac7410701fe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete An Existing User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"csaba.vadasz79@gmail.com\",\r\n    \"firstName\": \"Csaba\",\r\n    \"password\": \"Almafa1234?\",\r\n    \"passwordConfirmation\": \"Almafa1234?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/admin/users/8a2d5556-d155-469d-862b-bad563ba0abb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"admin",
+						"users",
+						"8a2d5556-d155-469d-862b-bad563ba0abb"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

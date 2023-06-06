@@ -12,11 +12,30 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * This class contains the litter model.
+ */
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class LitterModel {
+
+    /**
+     * The litter model fields.
+     * <p>
+     *     id: the litter id
+     *     createdAt: the litter created at
+     *     updatedAt: the litter updated at
+     *     createdBy: the litter created by
+     *     updatedBy: the litter updated by
+     *     address: the litter address
+     *     description: the litter description
+     *     image: the litter image
+     *     reports: the litter reports
+     *     status: the litter status
+     * </p>
+     */
     private UUID id;
     private LocalDateTime createdAt = LocalDateTime.now();
     private LocalDateTime updatedAt = LocalDateTime.now();

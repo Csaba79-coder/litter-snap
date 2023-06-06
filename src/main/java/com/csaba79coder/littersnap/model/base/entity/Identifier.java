@@ -9,10 +9,19 @@ import lombok.Getter;
 
 import java.util.UUID;
 
+/**
+ * This class contains the identifier entity.
+ */
 @MappedSuperclass
 @Getter
 public class Identifier {
 
+    /**
+     * The identifier entity fields.
+     * <p>
+     *     id: the identifier id
+     * </p>
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
