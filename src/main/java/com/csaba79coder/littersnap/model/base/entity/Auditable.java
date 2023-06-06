@@ -9,11 +9,25 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+/**
+ * This class contains the auditable entity.
+ */
 @MappedSuperclass
 @Getter
 @Setter
 public class Auditable extends Identifier {
 
+    /**
+     * The auditable entity fields.
+     * <p>
+     *     createdAt: the date and time when the entity was created
+     *     updatedAt: the date and time when the entity was updated
+     *     createdBy: the user who created the entity
+     *     updatedBy: the user who updated the entity
+     * </p>
+     * extended from Identifier:
+     *    id: the auditable id
+     */
     @CreationTimestamp
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();

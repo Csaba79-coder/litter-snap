@@ -18,24 +18,54 @@ import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+/**
+ * This class contains the user service.
+ * Also include logs errors and exceptions.
+ */
 @Service
 @RequiredArgsConstructor
 @Slf4j
 @PropertySource("classpath:application.properties")
 public class UserService {
 
+    /**
+     * Dependency injection fields.
+     * <p>
+     *     userRepository: the user repository
+     * </p>
+     */
     private final UserRepository userRepository;
 
+
+    /**
+     * Fields injected from application.properties.
+     * <p>
+     *     emailValidator: the validator regex injected from application.properties (email.validator.regexp)
+     *     and this property is hided to IntelliJ IDEA's environment variables.
+     * </p>
+     */
     @Value("${validator.regexp}")
     private String emailValidator;
 
+    /**
+     * Fields injected from application.properties.
+     * <p>
+     *     passwordValidator: the validator regex injected from application.properties (validator.regexp)
+     *     and this property is hided to IntelliJ IDEA's environment variables.
+     * </p>
+     */
     @Value("${password.validator.regexp}")
     private String passwordValidator;
 
+    /**
+     * This method finds all users.
+     * @return the list of users (model)
+     */
     public List<UserModel> findAllUsers() {
         return userRepository.findAll()
                 .stream()
@@ -44,6 +74,14 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * This method add a new user
+     * @param model the user registration model
+     * @return the user model
+     * @throws IllegalArgumentException if input is invalid
+     * check the email and password if it is valid
+     * if fields are not null set it to the entity and modify it
+     */
     public UserModel addNewUser(UserRegistrationModel model) {
         String errorMessage;
         boolean isValidEmail = isValidEmail(model.getEmail());
@@ -76,6 +114,16 @@ public class UserService {
         return Mapper.mapUserEntityToModel(userRepository.save(Mapper.mapUserRegistrationModelToUserEntity(model)));
     }
 
+    /**
+     * This method modify an existing user
+     * @param model the user registration model
+     * @return the user model
+     * @throws NoSuchElementException if user is not found
+     * @throws IllegalArgumentException if input is invalid
+     * @throws InputMismatchException if email is already in use
+     * check the email and password if it is valid
+     * if fields are not null set it to the entity and modify it
+     */
     public UserModel modifyAnExistingUser(UUID id, UserModifyModel model) {
         String errorMessage;
         boolean isValidEmail = isValidEmail(model.getEmail());
@@ -85,7 +133,7 @@ public class UserService {
                 .orElseThrow(() -> {
                     String message = "User not found with id: " + id;
                     log.error(message);
-                    throw new IllegalArgumentException(message);
+                    throw new NoSuchElementException(message);
                 });
 
         // Check if the email is the same
@@ -119,7 +167,7 @@ public class UserService {
             // Delete the current user
             userRepository.delete(currentUser);
 
-            // Create a new user entity using the modify model
+            // Create a new user entity using modify model
             User newUser = new User();
             newUser.setEmail(model.getEmail());
             if (model.getEmail() != null) {
@@ -167,6 +215,10 @@ public class UserService {
         }
     }
 
+    /**
+     * This method deletes a user by id.
+     * @param id the id of the user
+     */
     public void deleteUser(UUID id) {
         User currentUser = userRepository.findUsersById(id)
                 .orElseThrow(() -> {
@@ -177,14 +229,29 @@ public class UserService {
         userRepository.delete(currentUser);
     }
 
+    /**
+     * This method finds a user by email.
+     * @param email the id of the user
+     * @return the user model
+     */
     public boolean findUserByEmail(String email) {
         return userRepository.findUsersByEmail(email).isPresent();
     }
 
+    /**
+     * This validates email
+     * @param email the email of the user
+     * @return boolean true or false regarding is email valid or not
+     */
     private boolean isValidEmail(String email) {
         return Validator.patternMatches(email, emailValidator);
     }
 
+    /**
+     * This validates email
+     * @param password the password of the user
+     * @return boolean true or false regarding is password (and confirmationPassword) valid or not
+     */
     private boolean isValidPassword(String password) {
         return Validator.patternMatches(password, passwordValidator);
     }
